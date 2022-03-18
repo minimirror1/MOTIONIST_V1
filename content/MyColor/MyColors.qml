@@ -16,4 +16,6 @@ QtObject {
     readonly property color textHoverColor : "#f50057"
     readonly property color textPressedColor : "#c4c4c4"
 
+    readonly property color textFocusColor : "#f50057"
+
 }

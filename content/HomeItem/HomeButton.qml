@@ -45,6 +45,7 @@ Item {
             text: qsTr("NEW ")
             font.pixelSize: 30
             horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
             anchors.horizontalCenter: parent.horizontalCenter
             textFormat: Text.RichText
             font.family: "HelveticaRounded"

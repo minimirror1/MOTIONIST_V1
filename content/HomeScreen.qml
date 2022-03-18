@@ -6,8 +6,8 @@ import "HomeItem"
 import "./MyColor"
 
 Item {
-    width: 1920
-    height: 1080 - 120
+    width: 1536
+    height: 864
 
     Rectangle {
         id: rectangle
@@ -16,13 +16,19 @@ Item {
 
         Row {
             id: row
-            y: 270
-            height: 500
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 100
-            anchors.rightMargin: 300
-            anchors.leftMargin: 300
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+
+
+            anchors.rightMargin: parent.width /8
+            anchors.leftMargin: parent.width /8
+
+            anchors.bottomMargin: parent.height/5
+            anchors.topMargin: parent.height/5
+
+            spacing: (row.width-(250*4))/3
 
             HomeButton {
                 id: newProjectButton

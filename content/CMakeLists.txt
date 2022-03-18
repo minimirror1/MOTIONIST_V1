@@ -9,7 +9,6 @@ qt6_add_qml_module(content
         App.qml
         HomeScreen.qml
         TitleBar.qml
-        BottomBar.qml
         HomeItem/HomeButton.qml
         MyColor/MyColors.qml
         MyColor/qmldir
