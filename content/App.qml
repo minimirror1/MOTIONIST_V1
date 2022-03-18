@@ -50,6 +50,10 @@ ApplicationWindow {
     visible: true
     title: "MOTIONIST_V1"
 
+     Component.onCompleted: {
+     console.log("start")
+
+     }
     Rectangle{
         anchors.fill:parent
         color:MyColors.bgColor
@@ -213,6 +217,8 @@ ApplicationWindow {
         }
         BoardScreen {
             id: boardScreen
+            width:root.width
+            height: root.height-120
             y : titleBar.height
         }
 
