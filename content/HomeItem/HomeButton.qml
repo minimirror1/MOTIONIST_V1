@@ -93,11 +93,16 @@ Item {
                 text2.color = MyColors.textPressedColor
             }
             onReleased: {
-                image.visible = false
-                image_on.visible = true
+                image.visible = true
+                image_on.visible = false
+                btn_bg.color = MyColors.buttonMainColor
+                text1.color = MyColors.textMainColor
+                text2.color = MyColors.textMainColor
+                /*
                 btn_bg.color = MyColors.buttonHoverColor
                 text1.color = MyColors.textHoverColor
                 text2.color = MyColors.textHoverColor
+                */
             }
         }
     }

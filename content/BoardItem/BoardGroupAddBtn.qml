@@ -84,7 +84,7 @@ Item {
                 rectangle.color = MyColors.buttonPressedColor
             }
             onReleased: {
-                rectangle.color = MyColors.buttonHoverColor
+                rectangle.color = MyColors.buttonMainColor
             }
             onClicked: {
                 if(mode === 0)
