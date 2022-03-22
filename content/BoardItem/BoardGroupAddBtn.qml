@@ -15,17 +15,30 @@ Item {
     height: 100
 
 
-    property var index : setIndex
-    property var mode : setMode
-    property var selected : setSelected
+//    property var index : index
+//    property var mode : mode
+//    property var selected_1 : selected
 
+    property color textColor : MyColors.textMainColor
+
+    property alias mouseArea : mouseArea
+
+    property alias boardTypeText : boardTypeText
 
     signal groupAddSignal()
     signal selectSignal(var myIndex)
 
-    Component.onCompleted:{
-        console.log("index : " + index)
+
+    Connections
+    {
+        target: boardScreen
+        onNewSelectEvent:{
+            rectangle.color = MyColors.buttonMainColor
+            textColor = MyColors.textMainColor
+        }
     }
+
+
 
     Rectangle {
         id: rectangle
@@ -35,7 +48,7 @@ Item {
 
         Text {
             id: text1
-            color: MyColors.textMainColor
+            color: textColor
             text: qsTr("+")
             visible : (mode === 0)? true:false
             anchors.verticalCenter: parent.verticalCenter
@@ -50,7 +63,7 @@ Item {
         Text {
             id: groupText
             y: parent.height /3 -10
-            color: MyColors.textMainColor
+            color: textColor
             text: qsTr("Group ")
             visible : (mode >= 1)? true:false
             font.pixelSize: 16
@@ -61,42 +74,105 @@ Item {
         Text {
             id: boardTypeText
             y: parent.height /3*2 -10
-            color: MyColors.textMainColor
-            text: qsTr("BASE BOARD")
+            color: textColor
+            text : qsTr(" ")
+            //text:  (mode === 2)? qsTr("BASE TYPE"): (mode === 3)? qsTr("RC TYPE") : (mode === 4)? qsTr("DY TTL TYPE") : (mode === 5)? qsTr("DY 485 TYPE") : qsTr(" ")
+
             visible : (mode >= 2)? true:false
             font.pixelSize: 12
             anchors.horizontalCenterOffset: 0
             font.family: "Helvetica-Light"
             anchors.horizontalCenter: parent.horizontalCenter
+
+            Component.onCompleted: {
+                text = Qt.binding(function() {
+                    if(mode === 2)
+                        return qsTr("BASE BOARD")
+                    else if(mode === 3)
+                        return qsTr("RC BOARD")
+                    else if(mode === 4)
+                        return qsTr("DYNAMIC TTL BOARD")
+                    else if(mode === 5)
+                        return qsTr("DYNAMIC 485 BOARD")
+                    else
+                        return qsTr(" ")
+               })
+            }
         }
 
         MouseArea{
+            id : mouseArea
             anchors.fill: parent
             hoverEnabled: true
 
             onEntered: {
-                rectangle.color = MyColors.buttonHoverColor
+                if(selected === 1)
+                {
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonHoverColor
+                }
+                else
+                {
+                    textColor = MyColors.textMainColor
+                    rectangle.color = MyColors.buttonHoverColor
+                }
+                console.log("index : " + index + ",sel : "+  selected)
             }
             onExited: {
-                rectangle.color = MyColors.buttonMainColor
+                if(selected === 1)
+                {
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonSelectColor
+                }
+                else
+                {
+                    textColor = MyColors.textMainColor
+                    rectangle.color = MyColors.buttonMainColor
+                }
             }
             onPressed: {
-                rectangle.color = MyColors.buttonPressedColor
+                if(selected === 1)
+                {
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonPressedColor
+                }
+                else
+                {
+                    textColor = MyColors.textMainColor
+                    rectangle.color = MyColors.buttonPressedColor
+                }
             }
             onReleased: {
-                rectangle.color = MyColors.buttonMainColor
+                if(selected === 1)
+                {
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonSelectColor
+                }
+                else
+                {
+                    textColor = MyColors.textMainColor
+                    rectangle.color = MyColors.buttonMainColor
+                }
             }
             onClicked: {
                 if(mode === 0)
                 {
                     mode = 1
-                    selected = 1
+
                     console.log("group add")
                     groupAddSignal()
+
+                    selected = 1
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonSelectColor
                 }
-                else if(mode === 1)
+                else if(mode >= 1)
                 {
                     selectSignal(index)
+
+                    selected = 1
+                    textColor = MyColors.textSelectColor
+                    rectangle.color = MyColors.buttonSelectColor
                 }
             }
         }

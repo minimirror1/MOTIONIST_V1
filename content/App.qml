@@ -38,7 +38,7 @@ import MOTIONIST_V1
 import "./MyColor"
 
 ApplicationWindow {
-    id:root
+    id:mainWindow
     width: 1536
     height: 864
 
@@ -50,25 +50,27 @@ ApplicationWindow {
     visible: true
     title: "MOTIONIST_V1"
 
-     Component.onCompleted: {
-     console.log("start")
-
-     }
-    Rectangle{
-        anchors.fill:parent
-        color:MyColors.bgColor
-    }
-
     //flags: Qt.Window|Qt.FramelessWindowHint
 
 
 
 
+     Component.onCompleted: {
+     console.log("start")
+
+     }
+
+    Rectangle{
+        anchors.fill:parent
+        color:MyColors.bgColor
+    }
 
     TitleBar {
         id: titleBar
-
+        anchors.right: parent.right
+        anchors.left: parent.left
     }
+
 
     footer: Item{
         height: 40
@@ -211,14 +213,14 @@ ApplicationWindow {
 
         HomeScreen {
             id: homeScreen
-            width:root.width
-            height: root.height-120
+            width:mainWindow.width
+            height: mainWindow.height-120
             y : titleBar.height
         }
         BoardScreen {
             id: boardScreen
-            width:root.width
-            height: root.height-120
+            width:mainWindow.width
+            height: mainWindow.height-120
             y : titleBar.height
         }
 

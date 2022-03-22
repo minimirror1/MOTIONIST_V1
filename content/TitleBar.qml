@@ -27,6 +27,44 @@ Item {
             font.bold: true
         }
     }
+
+    property int previousX
+    property int previousY
+
+    MouseArea {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        onPressed: {
+            previousX = mouseX
+            previousY = mouseY
+        }
+
+        onMouseXChanged: {
+            var dx = mouseX - previousX
+            mainWindow.setX(mainWindow.x + dx)
+        }
+
+        onMouseYChanged: {
+            var dy = mouseY - previousY
+            mainWindow.setY(mainWindow.y + dy)
+        }
+    }
+
+    Button {
+        id: button
+        anchors.right: parent.right
+        x: 1837
+        y: 6
+        text: qsTr("x")
+        onClicked: {
+            mainWindow.close()
+        }
+    }
 }
 
 /*##^##
