@@ -27,6 +27,8 @@ Item {
     Image {
         id: btnImg
         source: "../images/Board/BASE.png"
+//        sourceSize.width: btnImg.width * 2/3
+//        sourceSize.height: btnImg.height * 2/3
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         visible: true

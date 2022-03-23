@@ -275,7 +275,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.5}D{i:2}D{i:3}D{i:1}D{i:5}D{i:4}D{i:7}D{i:8}D{i:9}D{i:11}D{i:10}
-D{i:13}D{i:12}
+    D{i:0;formeditorZoom:0.75}D{i:2}D{i:3}D{i:1}D{i:6}D{i:5}D{i:9}D{i:10}D{i:11}D{i:13}
+D{i:12}D{i:16}D{i:15}
 }
 ##^##*/

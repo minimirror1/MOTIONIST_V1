@@ -28,5 +28,6 @@ QtObject {
 
     //box
     readonly property color boxBgColor : "#2a2d31"
+    readonly property color listBgColor : "#000000"
 
 }

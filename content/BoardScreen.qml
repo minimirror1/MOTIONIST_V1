@@ -178,6 +178,8 @@ Item {
                         scale: PathView.itemscale
                         z: PathView.z
 
+                        //visible: (z >150)? false : true
+
 
                     }
 
@@ -186,16 +188,13 @@ Item {
                 preferredHighlightEnd: 0.5
                 preferredHighlightBegin: 0.5
 
+                highlightRangeMode: PathView.StrictlyEnforceRange
                 highlightMoveDuration : 1000 // 전환속도
                 //highlightMoveDuration : moveIndex * 500 // 전환속도
 
-
-
-
-
                 path: Path {
                     startX: item2.width * 0.5
-                    startY: 250
+                    startY: -500
 
                     PathAttribute { name: "opacity"; value: 0.05 }
                     PathAttribute { name: "z"; value: 50 }
@@ -212,13 +211,69 @@ Item {
 
                     PathLine {
                         x: item2.width *0.5
-                        y: item2.height-250
+                        y: item2.height+500
                     }
 
                     PathAttribute { name: "opacity"; value: 0.05 }
                     PathAttribute { name: "z"; value: 50 }
                     PathAttribute { name: "itemscale"; value: 0.7 }
                 }
+
+//                path: Path {
+//                    startX: item2.width * 0.5
+//                    startY: 200
+
+//                    PathAttribute { name: "opacity"; value: 0 }
+//                    PathAttribute { name: "z"; value: 50 }
+//                    PathAttribute { name: "itemscale"; value: 0.7 }
+
+//                    PathLine {
+//                        x: item2.width * 0.5
+//                        y: (item2.height-250 +250) /2
+//                    }
+
+//                    PathAttribute { name: "opacity"; value: 1 }
+//                    PathAttribute { name: "z"; value: 100 }
+//                    PathAttribute { name: "itemscale"; value: 1 }
+
+//                    PathLine {
+//                        x: item2.width *0.5
+//                        y: item2.height-200
+//                    }
+
+//                    PathAttribute { name: "opacity"; value: 0 }
+//                    PathAttribute { name: "z"; value: 300 }
+//                    PathAttribute { name: "itemscale"; value: 1.7 }
+//                }
+
+
+
+//                path: Path {
+//                    startX: item2.width * 0.5
+//                    startY: 250
+
+//                    PathAttribute { name: "opacity"; value: 0.05 }
+//                    PathAttribute { name: "z"; value: 50 }
+//                    PathAttribute { name: "itemscale"; value: 0.7 }
+
+//                    PathLine {
+//                        x: item2.width * 0.5
+//                        y: item2.height * 0.5
+//                    }
+
+//                    PathAttribute { name: "opacity"; value: 1 }
+//                    PathAttribute { name: "z"; value: 100 }
+//                    PathAttribute { name: "itemscale"; value: 1 }
+
+//                    PathLine {
+//                        x: item2.width *0.5
+//                        y: item2.height-250
+//                    }
+
+//                    PathAttribute { name: "opacity"; value: 0.05 }
+//                    PathAttribute { name: "z"; value: 50 }
+//                    PathAttribute { name: "itemscale"; value: 0.7 }
+//                }
             }
     }
 }

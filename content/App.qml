@@ -65,11 +65,7 @@ ApplicationWindow {
         color:MyColors.bgColor
     }
 
-    TitleBar {
-        id: titleBar
-        anchors.right: parent.right
-        anchors.left: parent.left
-    }
+
 
 
     footer: Item{
@@ -204,10 +200,11 @@ ApplicationWindow {
     StackLayout {
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: parent.top
+        //anchors.top: parent.top
+        anchors.top : titleBar.bottom
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
-        anchors.topMargin: 60
+        //anchors.topMargin: 60
 
         currentIndex: bar.currentIndex
 
@@ -224,6 +221,12 @@ ApplicationWindow {
             y : titleBar.height
         }
 
+    }
+
+    TitleBar {
+        id: titleBar
+        anchors.right: parent.right
+        anchors.left: parent.left
     }
 
 
