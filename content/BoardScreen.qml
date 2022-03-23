@@ -78,14 +78,7 @@ Item {
 
 
 
-    ListModel{
-        id : modelGroup
-        ListElement{
-            index : 0
-            mode : 0
-            selected : 0
-        }
-    }
+
 
     Item {
         id: item1

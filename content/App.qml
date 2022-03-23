@@ -52,6 +52,15 @@ ApplicationWindow {
 
     //flags: Qt.Window|Qt.FramelessWindowHint
 
+    ListModel{
+        id : modelGroup
+        ListElement{
+            index : 0
+            mode : 0
+            selected : 0
+        }
+    }
+
 
 
 
