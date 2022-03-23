@@ -18,8 +18,13 @@ Item {
         modelGroup.append({
                               index: modelGroup.count,
                               mode : 0,
-                              selected : 0
+                              selected : 0,
+                              groupId : 0,
+                              groupName : "",
+                              baseType : [],
+                              rcType : []
                           })
+
 
         for(var i = 0; i< modelGroup.count; i++)
         {
@@ -177,7 +182,7 @@ Item {
                     }
 
 
-                pathItemCount: 5
+                pathItemCount: 3
                 preferredHighlightEnd: 0.5
                 preferredHighlightBegin: 0.5
 

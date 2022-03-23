@@ -7,6 +7,49 @@ Item {
     width: 1280
     height: 144
 
+    function checkGroup(changeID)
+    {
+        var ret = 1
+        for(var i = 0 ; i < modelGroup.count ; i++)
+        {
+            if(modelGroup.get(i).groupId === changeID)
+            {
+                ret = 0
+                return ret
+            }
+        }
+        return ret
+    }
+
+    function groupNumChange(order){
+
+        var temp = groupId
+        if(order === 1)//plus
+        {
+            console.log("plus order")
+            for(var i = 0 ; i < modelGroup.count ; i++)
+            {
+                if(++temp > 16)
+                    temp = 1
+                if(checkGroup(temp))
+                    break
+            }
+        }
+        else if(order === -1)
+        {
+            console.log("plus order")
+            for(var j = 0 ; j < modelGroup.count ; j++)
+            {
+                if(--temp < 1)
+                    temp = 16
+                if(checkGroup(temp))
+                    break
+            }
+            console.log("minus order")
+        }
+        groupId = temp
+    }
+
     Item {
         id: item1
         width: 300
@@ -173,7 +216,7 @@ Item {
     Text {
         id: groupNumText
         color : MyColors.textMainColor
-        text: qsTr("Group 0")
+        text: qsTr("Group ")+((groupId===0)?qsTr(" ") :Number(groupId))
         anchors.bottom: groupNameText.top
         font.pixelSize: 30
         anchors.bottomMargin: 10
@@ -196,6 +239,18 @@ Item {
         anchors.bottomMargin: 10
         cursorVisible: true
         anchors.horizontalCenter: parent.horizontalCenter
+        Component.onCompleted: {
+            groupName = Qt.binding(function(){
+                    return groupNameText.text
+                }
+                )
+        }
+        onActiveFocusChanged: {
+            if(activeFocus)
+            {
+                selectAll()
+            }
+        }
     }
 
     Item {
@@ -216,6 +271,7 @@ Item {
         }
 
         MouseArea{
+            id: groupMinus
             anchors.fill: parent
             hoverEnabled: true
             onEntered: {
@@ -232,6 +288,9 @@ Item {
                     minus.source = "../images/Board/Base/minus_on.png"
                 else
                     minus.source = "../images/Board/Base/minus.png"
+            }
+            onClicked: {
+                groupNumChange(-1)
             }
         }
     }
@@ -252,6 +311,7 @@ Item {
             fillMode: Image.PreserveAspectFit
         }
         MouseArea{
+            id: groupPlus
             anchors.fill: parent
             hoverEnabled: true
             onEntered: {
@@ -268,6 +328,9 @@ Item {
                     add.source = "../images/Board/Base/add_on.png"
                 else
                     add.source = "../images/Board/Base/add.png"
+            }
+            onClicked: {
+                groupNumChange(1)
             }
         }
     }

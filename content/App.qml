@@ -54,10 +54,35 @@ ApplicationWindow {
 
     ListModel{
         id : modelGroup
+
         ListElement{
             index : 0
-            mode : 0
+            mode : 0        //type filter
             selected : 0
+            groupId : 0
+            groupName : ""
+            baseType: []
+            rcType:[]
+
+/*
+            baseType:[
+                ListElement{
+                    subId : 0;
+                    active : 0;
+                    name : qsTr("text input")
+                    motorType : 0
+                }
+            ]
+
+            rcType : [
+                ListElement{
+                    subId : 0;
+                    active : 0;
+                    name : qsTr("text input")
+                }
+            ]
+*/
+
         }
     }
 

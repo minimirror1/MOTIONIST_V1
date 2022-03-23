@@ -36,6 +36,30 @@ Item {
                 text2.text : qsTr("PROJCET")
                 image.source: "../images/Home/newproject.png"
                 image_on.source: "../images/Home/newproject_on.png"
+                mouseArea.onClicked: {
+                    //JSON.stringify(modelGroup)
+                    //console.log(qmlDebugger.properties(modelGroup))
+
+                    for(var i = 0; i < modelGroup.count; i++)
+                    {
+                        console.log("=============G : "+i+"===================================")
+                        console.log("index : "+modelGroup.get(i).index)
+                        console.log("mode : "+modelGroup.get(i).mode)
+                        console.log("selected : "+modelGroup.get(i).selected)
+                        console.log("groupId : "+modelGroup.get(i).groupId)
+                        console.log("groupName : "+modelGroup.get(i).groupName)
+                        console.log("------baseTypeCnt : "+ modelGroup.get(i).baseType.count)
+                        for(var j = 0; j< modelGroup.get(i).baseType.count;j++)
+                        {
+                            console.log("slot"+j+" subid : "+modelGroup.get(i).baseType.get(j).subId  + "   ............")
+                            console.log("slot"+j+" axisName : "+modelGroup.get(i).baseType.get(j).axisName)
+                            console.log("slot"+j+" active : "+modelGroup.get(i).baseType.get(j).active)
+                            console.log("slot"+j+" motorType : "+modelGroup.get(i).baseType.get(j).motorType)
+
+
+                        }
+                    }
+                }
             }
 
             HomeButton {

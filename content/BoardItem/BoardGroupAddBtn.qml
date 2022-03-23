@@ -69,6 +69,15 @@ Item {
             font.pixelSize: 16
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaRounded"
+
+            Component.onCompleted: {
+                groupText.text = Qt.binding(function(){
+                    if(groupId === 0)
+                        return qsTr("Group ")
+                    else
+                        return qsTr("Group ") + Number(groupId)
+                })
+            }
         }
 
         Text {

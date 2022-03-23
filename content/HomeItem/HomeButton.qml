@@ -7,6 +7,7 @@ Item {
     id: item1
     width: 250
     height: 500
+    property alias mouseArea: mouseArea
     property alias image: image
     property alias image_on: image_on
 
@@ -67,6 +68,7 @@ Item {
         }
 
         MouseArea{
+            id: mouseArea
             anchors.fill: parent
             hoverEnabled: true
 

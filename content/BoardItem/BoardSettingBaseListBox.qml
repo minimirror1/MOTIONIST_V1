@@ -4,19 +4,29 @@ import QtQuick.Controls 2.15
 import "../MyColor"
 
 Item {
-    id: item1
+    id: idText
     width: 960
     height: 30
+    property alias slotIdText: slotIdText
+
+
+    function nextTextinputFocusSlot(num)
+    {
+        if(num === subId){
+            textInput.selectAll()
+            textInput.focus = true
+        }
+    }
 
 
     Rectangle{
-        id : rectangle
-        anchors.fill: parent
+        id : rectangle25
+        anchors.fill: idText
         color: MyColors.listBgColor
     }
 
     Text {
-        id: text1
+        id: slotIdText
         width: 50
         text: qsTr("3-1")
         color : MyColors.textMainColor
@@ -29,8 +39,6 @@ Item {
         anchors.leftMargin: 20
         font.family: "HelveticaRounded"
     }
-
-
 
     Item {
         id: item2
@@ -56,7 +64,7 @@ Item {
                 height: listView.height
 
                 Text {
-                    text: name
+                    text: typeName
                     anchors.fill: boardSel
                     color : colorCode
                     anchors.verticalCenter: parent.verticalCenter
@@ -70,19 +78,22 @@ Item {
             }
             model: ListModel {
                 ListElement {
-                    name: "AC"
-                    colorCode: "#02ed87"
-                }
-
-                ListElement {
-                    name: "BLDC"
-                    colorCode: "#00c8f1"
-                }
-
-                ListElement {
-                    name: "  "
+                    typeName: "  "
                     colorCode: "#00000000"
                 }
+                ListElement {
+                    typeName: "AC"
+                    colorCode: "#02ed87"
+                }
+                ListElement {
+                    typeName: "BLDC"
+                    colorCode: "#00c8f1"
+                }
+            }
+            onCurrentIndexChanged: {
+                motorType = Qt.binding(function(){
+                    return listView.currentIndex
+                })
             }
         }
 
@@ -186,6 +197,35 @@ Item {
         verticalAlignment: Text.AlignVCenter
         font.styleName: "Bold"
         font.family: "HelveticaRounded"
+        inputMask: {"NNNNNNNNNN"}
+        //validator: IntValidator {bottom: a; top: Z}
+
+        onActiveFocusChanged: {
+            if(activeFocus)
+            {
+                selectAll()
+            }
+        }
+        Keys.onEnterPressed: {
+            deselect()
+            focus = false
+            nextTextinputFocus(subId+1)
+        }
+        Keys.onTabPressed: {
+            deselect()
+            focus = false
+            nextTextinputFocus(subId+1)
+        }
+        Keys.onBacktabPressed: {
+            deselect()
+            focus = false
+            nextTextinputFocus(subId-1)
+        }
+        Component.onCompleted: {
+            axisName = Qt.binding(function(){
+                return text
+            })
+        }
     }
 
     Image {
@@ -202,7 +242,7 @@ Item {
         visible: false
         Component.onCompleted: {
             visible = Qt.binding(function(){
-                if(listView.currentIndex ===0)
+                if(listView.currentIndex ===1)
                     return true
                 else
                     return false
@@ -224,7 +264,7 @@ Item {
         visible: false
         Component.onCompleted: {
             visible = Qt.binding(function(){
-                if(listView.currentIndex ===1)
+                if(listView.currentIndex ===2)
                     return true
                 else
                     return false
