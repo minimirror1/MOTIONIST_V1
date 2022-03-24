@@ -56,7 +56,7 @@ ApplicationWindow {
     ListModel{
         id : modelGroup
 
-        dynamicRoles: true
+        //dynamicRoles: true
 
         //cacheBuffer : 65535
 /*
