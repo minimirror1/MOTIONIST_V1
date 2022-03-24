@@ -7,7 +7,7 @@ Item {
     id: idText
     width: 960
     height: 30
-    property alias slotIdText: slotIdText
+
 
 
     function nextTextinputFocusSlot(num)
@@ -28,7 +28,7 @@ Item {
     Text {
         id: slotIdText
         width: 50
-        text: qsTr("3-1")
+        text: groupId+"-"+subId
         color : MyColors.textMainColor
         anchors.left: parent.left
         anchors.top: parent.top

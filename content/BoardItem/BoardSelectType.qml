@@ -68,7 +68,21 @@ Item {
                         return false
                 })
             }
+        }
 
+        BoardSettingRc{
+            id : boardSettingRc
+            anchors.fill : parent
+            visible : false //(mode === 1)? true:false
+
+            Component.onCompleted: {
+                visible = Qt.binding(function(){
+                    if(mode === 3)
+                        return true
+                    else
+                        return false
+                })
+            }
         }
     }
 /*

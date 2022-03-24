@@ -11,10 +11,18 @@ Item {
     signal nextTextinputFocus(var num)
 
     Component.onCompleted: {
+        console.log(groupId + " base on completed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
+         console.log(baseType.count)
 
         for(var i = 0;  i < 10 ; i++)
         {
+            if(baseType.count >=10)
+            {
+                console.log("break")
+                break;
+            }
+            console.log("non break")
             baseType.append({
                                       subId : i+1,
                                       active : 0,
@@ -31,6 +39,7 @@ Item {
             //                              }
             //                              )
         }
+        console.log("creat    list")
 
     }
 
@@ -68,7 +77,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                slotIdText.text :groupId+"-"+subId
+
                 //anchors.rightMargin: 20
                 //anchors.leftMargin: 20
                 Component.onCompleted: {

@@ -56,7 +56,7 @@ ApplicationWindow {
     ListModel{
         id : modelGroup
 
-        dynamicRoles: true
+        //dynamicRoles: true
 
         //cacheBuffer : 65535
 /*
@@ -98,15 +98,7 @@ ApplicationWindow {
      Component.onCompleted: {
      console.log("start")
 
-         modelGroup.append({
-                               index: modelGroup.count,
-                               mode : 0,
-                               selected : 0,
-                               groupId : 0,
-                               groupName : "",
-                               baseType : [],
-                               rcType : []
-                           })
+
      }
 
     Rectangle{

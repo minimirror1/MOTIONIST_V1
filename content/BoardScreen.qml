@@ -13,8 +13,14 @@ Item {
     property int moveIndex : 0
 
     //Connection---------------------------------------------------------------
+
+    Component.onCompleted: {
+
+    }
+
     function groupAddSlot()
     {
+        modelGroup.sync()
         modelGroup.append({
                               index: modelGroup.count,
                               mode : 0,
@@ -52,6 +58,7 @@ Item {
         console.log("new current index : " + pathView.currentIndex +"  moveing : " + moveIndex)
     }
     function selectSlot(myIndex){
+        modelGroup.sync()
         console.log("selectSlot : " + myIndex)
 
 
@@ -157,7 +164,7 @@ Item {
                 anchors.fill: item2
                 model: modelGroup
 
-                cacheItemCount : 65535
+                cacheItemCount : 1000
 
                 interactive: false
                 //interactive: true

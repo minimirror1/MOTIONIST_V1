@@ -6,6 +6,26 @@ Item {
     height: 720
 
 
+    signal nextTextinputFocus(var num)
+
+    Component.onCompleted: {
+        console.log("rc on completed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+        for(var i = 0;  i < 28 ; i++)
+        {
+            if(rcType.count >=28)
+                break;
+
+            rcType.append({
+                                      subId : i+1,
+                                      active : 0,
+                                      axisName : "",
+                                      motorType : 3
+                                  })
+        }
+        console.log("rc cnt : "+rcType.count)
+    }
+
     BoardSettingTitle {
         id: boardSettingTitle
         anchors.left: parent.left
@@ -26,59 +46,37 @@ Item {
 
         GridView {
             id: gridView
-            anchors.fill: parent
+
             flow: GridView.FlowTopToBottom
             keyNavigationWraps: false
-            anchors.rightMargin: 20
+
+            anchors.top:parent.top
+            anchors.right: parent.right
+            anchors.left: parent.left
+
+            anchors.rightMargin: -10
             anchors.leftMargin: 20
-            anchors.bottomMargin: 20
             anchors.topMargin: 20
-            delegate: Item {
-                x: 5
-                height: 50
-                Column {
-                    spacing: 5
-                    Rectangle {
-                        width: 40
-                        height: 40
-                        color: colorCode
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
 
-                    Text {
-                        x: 5
-                        text: name
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        font.bold: true
-                    }
+            height: (30+14)*7
+
+            cellWidth: gridView.width/4//14 + 240
+            cellHeight: gridView.height/7 // 14 + 30
+
+            interactive : false
+
+
+
+            delegate: BoardSettingRcListBox{
+                id : boardSettingBaseListBox
+                width : gridView.width/4 - 28
+                height: gridView.height/7 - 14
+
+                Component.onCompleted: {
+                    nextTextinputFocus.connect(nextTextinputFocusSlot)
                 }
             }
-            cellWidth: 70
-            cellHeight: 70
-            model: ListModel {
-                ListElement {
-                    name: "Grey"
-                    colorCode: "grey"
-                }
-
-                ListElement {
-                    name: "Red"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Blue"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-            }
+            model: rcType
         }
-
-
     }
-
 }
