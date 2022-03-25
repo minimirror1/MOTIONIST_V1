@@ -201,7 +201,7 @@ Item {
 
                 path: Path {
                     startX: item2.width * 0.5
-                    startY: -500
+                    startY: -550
 
                     PathAttribute { name: "opacity"; value: 0.05 }
                     PathAttribute { name: "z"; value: 50 }
@@ -218,7 +218,7 @@ Item {
 
                     PathLine {
                         x: item2.width *0.5
-                        y: item2.height+500
+                        y: item2.height+550
                     }
 
                     PathAttribute { name: "opacity"; value: 0.05 }
