@@ -84,6 +84,35 @@ Item {
                 })
             }
         }
+
+        BoardSettingDynamic{
+            id : boardSettingDynamic_ttl
+            anchors.fill : parent
+            visible : false //(mode === 1)? true:false
+
+            Component.onCompleted: {
+                visible = Qt.binding(function(){
+                    if(mode === 4)
+                        return true
+                    else
+                        return false
+                })
+            }
+        }
+        BoardSettingDynamic{
+            id : boardSettingDynamic_485
+            anchors.fill : parent
+            visible : false //(mode === 1)? true:false
+
+            Component.onCompleted: {
+                visible = Qt.binding(function(){
+                    if(mode === 5)
+                        return true
+                    else
+                        return false
+                })
+            }
+        }
     }
 /*
     DropShadowEffect {

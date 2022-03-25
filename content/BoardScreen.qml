@@ -20,7 +20,7 @@ Item {
 
     function groupAddSlot()
     {
-        modelGroup.sync()
+        //modelGroup.sync()
         modelGroup.append({
                               index: modelGroup.count,
                               mode : 0,
@@ -28,7 +28,9 @@ Item {
                               groupId : 0,
                               groupName : "",
                               baseType : [],
-                              rcType : []
+                              rcType : [],
+                              dyTtlType:[],
+                              dy485Type :[]
                           })
 
 
@@ -58,7 +60,7 @@ Item {
         console.log("new current index : " + pathView.currentIndex +"  moveing : " + moveIndex)
     }
     function selectSlot(myIndex){
-        modelGroup.sync()
+        //modelGroup.sync()
         console.log("selectSlot : " + myIndex)
 
 

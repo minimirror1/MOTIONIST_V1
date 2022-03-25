@@ -22,14 +22,14 @@ Item {
     Rectangle{
         id : rectangle25
         anchors.fill: idText
-        color: MyColors.listBgColor
+        color: (listView.currentIndex === 0)?MyColors.listDeselBgColor :MyColors.listBgColor
     }
 
     Text {
         id: slotIdText
         width: 50
         text: groupId+"-"+subId
-        color : MyColors.textMainColor
+        color :(listView.currentIndex === 0)?MyColors.textDeselectColor :MyColors.textMainColor
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -105,7 +105,7 @@ Item {
         Rectangle {
             id: backGroundColor1
             width: item2.width
-            color: MyColors.listBgColor
+            color: (listView.currentIndex === 0)?MyColors.listDeselBgColor :MyColors.listBgColor
             anchors.left: next.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -115,7 +115,7 @@ Item {
         Rectangle {
             id: backGroundColor2
             width: item2.width
-            color: MyColors.listBgColor
+            color: (listView.currentIndex === 0)?MyColors.listDeselBgColor :MyColors.listBgColor
             anchors.right: previous.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -130,7 +130,7 @@ Item {
             source: "../images/Board/Base/next.png"
             fillMode: Image.PreserveAspectFit
 
-            visible : (listView.currentIndex >= 2)? false:true
+            //visible : (listView.currentIndex >= 2)? false:true
 
             MouseArea{
                 anchors.fill: parent
@@ -167,7 +167,7 @@ Item {
             source: "../images/Board/Base/previous.png"
             fillMode: Image.PreserveAspectFit
 
-            visible : (listView.currentIndex === 0)? false:true
+            //visible : (listView.currentIndex === 0)? false:true
 
             MouseArea{
                 anchors.fill: parent
@@ -211,7 +211,8 @@ Item {
         font.styleName: "Bold"
         font.family: "HelveticaRounded"
         inputMask: {"NNNNNNNNNN"}
-        //validator: IntValidator {bottom: a; top: Z}
+        visible: (listView.currentIndex === 0)?false :true
+        //validator: IntValidator {bottom: a; top: Z}       
         onActiveFocusChanged: {
             if(activeFocus)
             {
@@ -225,6 +226,7 @@ Item {
         Keys.onEnterPressed: {
             deselect()
             focus = false
+            axisName = text
             nextTextinputFocus(subId+1)
         }
         Keys.onTabPressed: {

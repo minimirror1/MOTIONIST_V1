@@ -68,6 +68,8 @@ ApplicationWindow {
             groupName : ""
             baseType: []
             rcType:[]
+            dyTtlType:[]
+            dy485Type :[]
         }
 
 /*
@@ -151,6 +153,7 @@ ApplicationWindow {
                         homeText.color = MyColors.textMainColor
                 }
             }
+
             TabButton{
                                 Text{
                     id : boardText
@@ -166,6 +169,24 @@ ApplicationWindow {
                         boardText.color = MyColors.textFocusColor
                     else
                         boardText.color = MyColors.textMainColor
+                }
+            }            
+            TabButton{
+
+                Text{
+                    id : motorText
+                    text : qsTr("MOTOR")
+                    anchors.fill: parent
+                    font.pixelSize: 15
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    color: MyColors.textMainColor
+                }
+                onFocusChanged: {
+                    if(focus)
+                        motorText.color = MyColors.textFocusColor
+                    else
+                        motorText.color = MyColors.textMainColor
                 }
             }
             TabButton{
@@ -188,26 +209,8 @@ ApplicationWindow {
             TabButton{
 
                 Text{
-                    id : motorText
-                    text : qsTr("MOTOR")
-                    anchors.fill: parent
-                    font.pixelSize: 15
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    color: MyColors.textMainColor
-                }
-                onFocusChanged: {
-                    if(focus)
-                        motorText.color = MyColors.textFocusColor
-                    else
-                        motorText.color = MyColors.textMainColor
-                }
-            }
-            TabButton{
-
-                Text{
                     id : motionText
-                    text : qsTr("HOME")
+                    text : qsTr("MOTION")
                     anchors.fill: parent
                     font.pixelSize: 15
                     horizontalAlignment: Text.AlignHCenter

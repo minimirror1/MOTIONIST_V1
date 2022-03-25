@@ -4,11 +4,10 @@ import QtQuick.Controls 2.15
 import "../MyColor"
 
 Item {
-
     id: idText
+    width: 960/2
+    height: 50
 
-    width: 960/4
-    height: 30
 
     function nextTextinputFocusSlot(num)
     {
@@ -23,6 +22,8 @@ Item {
             }
         }
     }
+
+
 
     Rectangle{
         id : rectangle25
@@ -107,13 +108,14 @@ Item {
 
     Text {
         id: text1
-        width: 30
+        width: 50
         color: MyColors.textMainColor
-        text: qsTr("RC")
+        text: (mode===4)?qsTr("TTL"):(mode===5)?qsTr("RS-485"):qsTr("")
         visible: !selhide.visible
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
         font.pixelSize: 12
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -145,13 +147,14 @@ Item {
 
         Text {
             id: text2
-            width: 30
+            width: 50
             color: MyColors.textDeselectColor
-            text: qsTr("RC")
-            visible:true
+            text: (mode===4)?qsTr("TTL"):(mode===5)?qsTr("RS-485"):qsTr("")
+            visible: true
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+            anchors.rightMargin: 10
             font.pixelSize: 12
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -168,12 +171,4 @@ Item {
             }
         }
     }
-
-
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:1.66}D{i:3}
-}
-##^##*/
