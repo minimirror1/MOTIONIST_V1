@@ -231,7 +231,7 @@ Item {
         width: 200
         height: 30
         color : MyColors.textMainColor
-        text: qsTr("Text Input")
+        text: (groupName.length === 0)? "TextInput" : groupName
         anchors.bottom: parent.bottom
         font.pixelSize: 26
         horizontalAlignment: Text.AlignHCenter
@@ -239,17 +239,22 @@ Item {
         anchors.bottomMargin: 10
         cursorVisible: true
         anchors.horizontalCenter: parent.horizontalCenter
-        Component.onCompleted: {
-            groupName = Qt.binding(function(){
-                    return groupNameText.text
-                }
-                )
-        }
         onActiveFocusChanged: {
             if(activeFocus)
             {
                 selectAll()
             }
+            else
+            {
+                groupName = text
+            }
+        }
+        Component.onCompleted: {
+            //변경
+//            groupName = Qt.binding(function(){
+//                    return groupNameText.text
+//                }
+//                )
         }
     }
 

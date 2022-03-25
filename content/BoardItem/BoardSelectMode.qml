@@ -60,7 +60,7 @@ Item {
     }
 
     function btnClickedSlot(num){
-        console.log("모드선택 : " + num)
+        //console.log("모드선택 : " + num)
         mode = num
     }
 

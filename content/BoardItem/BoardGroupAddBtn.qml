@@ -125,7 +125,7 @@ Item {
                     textColor = MyColors.textMainColor
                     rectangle.color = MyColors.buttonHoverColor
                 }
-                console.log("index : " + index + ",sel : "+  selected)
+                //console.log("index : " + index + ",sel : "+  selected)
             }
             onExited: {
                 if(selected === 1)

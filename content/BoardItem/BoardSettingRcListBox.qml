@@ -13,8 +13,11 @@ Item {
     function nextTextinputFocusSlot(num)
     {
         if(num === subId){
-            textInput.selectAll()
-            textInput.focus = true
+            if(!selhide.visible)
+            {
+                textInput.selectAll()
+                textInput.focus = true
+            }
         }
     }
 
@@ -22,6 +25,14 @@ Item {
         id : rectangle25
         anchors.fill: idText
         color: MyColors.listBgColor
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                //selhide.visible = true
+                axisActive = 0
+            }
+        }
     }
 
     Text {
@@ -42,7 +53,7 @@ Item {
     TextInput {
         id: textInput
         color: MyColors.textMainColor
-        text: qsTr("Text Input")
+        text: (axisName.length === 0)? "TextInput" : axisName
         anchors.left: slotIdText.right
         anchors.right: text1.left
         anchors.top: parent.top
@@ -62,6 +73,10 @@ Item {
             {
                 selectAll()
             }
+            else
+            {
+                axisName = text
+            }
         }
         Keys.onEnterPressed: {
             deselect()
@@ -79,9 +94,10 @@ Item {
             nextTextinputFocus(subId-1)
         }
         Component.onCompleted: {
-            axisName = Qt.binding(function(){
-                return text
-            })
+            //변경
+            //            axisName = Qt.binding(function(){
+            //                return text
+            //            })
         }
     }
 
@@ -90,6 +106,7 @@ Item {
         width: 30
         color: MyColors.textMainColor
         text: qsTr("RC")
+        visible: !selhide.visible
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -97,6 +114,25 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.family: "HelveticaRounded-Black"
+    }
+
+    Rectangle {
+        id: selhide
+        x: 4
+        y: 0
+        color: "#55ffffff"
+        anchors.fill: parent
+        visible : (axisActive === 0)?true : false
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                //parent.visible = false;
+                axisActive = 1
+                textInput.deselect()
+                focus = false
+            }
+        }
     }
 
 

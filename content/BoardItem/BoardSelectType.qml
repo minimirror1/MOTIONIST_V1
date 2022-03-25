@@ -20,13 +20,13 @@ Item {
    // property var index
 
     Component.onCompleted: {
-        console.log("보드창 :" + index + " ,모드 : " + mode)
+        //console.log("보드창 :" + index + " ,모드 : " + mode)
 
 
     }
 
     onMouseEventChanged: {
-        console.log("보드창 :" + index + " ,마우스 : " , mouseEvent)
+        //console.log("보드창 :" + index + " ,마우스 : " , mouseEvent)
     }
 
     Rectangle {

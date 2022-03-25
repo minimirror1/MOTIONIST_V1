@@ -37,7 +37,7 @@ Item {
             if(i !== modelGroup.count )
             {
                 modelGroup.set(i,{ selected : 0})
-                console.log("index : "+ modelGroup.get(i).index + "   selected :" + modelGroup.get(i).selected)
+                //console.log("index : "+ modelGroup.get(i).index + "   selected :" + modelGroup.get(i).selected)
             }
         }
 

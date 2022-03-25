@@ -25,7 +25,7 @@ Item {
             console.log("non break")
             baseType.append({
                                       subId : i+1,
-                                      active : 0,
+                                      axisActive : 0,
                                       axisName : "",
                                       motorType : 0
                                   }

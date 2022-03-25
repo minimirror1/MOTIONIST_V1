@@ -18,7 +18,7 @@ Item {
 
             rcType.append({
                                       subId : i+1,
-                                      active : 0,
+                                      axisActive : 0,
                                       axisName : "",
                                       motorType : 3
                                   })

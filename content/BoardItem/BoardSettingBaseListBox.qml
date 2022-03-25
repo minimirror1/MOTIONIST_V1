@@ -57,11 +57,14 @@ Item {
             layoutDirection: Qt.LeftToRight
 
             interactive: false
+            currentIndex : motorType
 
             delegate: Item {
                 id : boardSel
                 width: listView.width
                 height: listView.height
+
+
 
                 Text {
                     text: typeName
@@ -78,8 +81,8 @@ Item {
             }
             model: ListModel {
                 ListElement {
-                    typeName: "  "
-                    colorCode: "#00000000"
+                    typeName: "EMPTY"
+                    colorCode: "#c4c4c4"
                 }
                 ListElement {
                     typeName: "AC"
@@ -91,9 +94,11 @@ Item {
                 }
             }
             onCurrentIndexChanged: {
-                motorType = Qt.binding(function(){
-                    return listView.currentIndex
-                })
+                motorType = listView.currentIndex
+                //변경
+//                motorType = Qt.binding(function(){
+//                    return listView.currentIndex
+//                })
             }
         }
 
@@ -125,6 +130,8 @@ Item {
             source: "../images/Board/Base/next.png"
             fillMode: Image.PreserveAspectFit
 
+            visible : (listView.currentIndex >= 2)? false:true
+
             MouseArea{
                 anchors.fill: parent
                 hoverEnabled: true
@@ -146,6 +153,8 @@ Item {
                 onClicked: {
                     if(listView.currentIndex < 2)
                        listView.currentIndex += 1
+//                    else
+//                        listView.currentIndex = 0
                 }
             }
         }
@@ -157,6 +166,8 @@ Item {
             anchors.left: parent.left
             source: "../images/Board/Base/previous.png"
             fillMode: Image.PreserveAspectFit
+
+            visible : (listView.currentIndex === 0)? false:true
 
             MouseArea{
                 anchors.fill: parent
@@ -179,6 +190,8 @@ Item {
                 onClicked: {
                     if(listView.currentIndex !== 0)
                        listView.currentIndex -= 1
+//                    else
+//                         listView.currentIndex =2
                 }
             }
         }
@@ -189,7 +202,7 @@ Item {
         x: 83
         width: 200
         color: MyColors.textMainColor
-        text: qsTr("Text Input")
+        text: (axisName.length === 0)? "TextInput" : axisName
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         font.pixelSize: 18
@@ -199,11 +212,14 @@ Item {
         font.family: "HelveticaRounded"
         inputMask: {"NNNNNNNNNN"}
         //validator: IntValidator {bottom: a; top: Z}
-
         onActiveFocusChanged: {
             if(activeFocus)
             {
                 selectAll()
+            }
+            else
+            {
+                axisName = text
             }
         }
         Keys.onEnterPressed: {
@@ -222,9 +238,10 @@ Item {
             nextTextinputFocus(subId-1)
         }
         Component.onCompleted: {
-            axisName = Qt.binding(function(){
-                return text
-            })
+            //console.log("text length : " + axisName.length)
+//            axisName = Qt.binding(function(){
+//                return text
+//            })
         }
     }
 

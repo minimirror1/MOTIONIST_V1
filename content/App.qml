@@ -59,7 +59,7 @@ ApplicationWindow {
         //dynamicRoles: true
 
         //cacheBuffer : 65535
-/*
+
         ListElement{
             index : 0
             mode : 0        //type filter
@@ -68,7 +68,8 @@ ApplicationWindow {
             groupName : ""
             baseType: []
             rcType:[]
-*/
+        }
+
 /*
             baseType:[
                 ListElement{
@@ -87,9 +88,7 @@ ApplicationWindow {
                 }
             ]
 */
-/*
-        }
-    */
+
     }
 
 
@@ -98,15 +97,15 @@ ApplicationWindow {
      Component.onCompleted: {
      console.log("start")
 
-         modelGroup.append({
-                               index: modelGroup.count,
-                               mode : 0,
-                               selected : 0,
-                               groupId : 0,
-                               groupName : "",
-                               baseType : [],
-                               rcType : []
-                           })
+//         modelGroup.append({
+//                               index: modelGroup.count,
+//                               mode : 0,
+//                               selected : 0,
+//                               groupId : 0,
+//                               groupName : "",
+//                               baseType : [],
+//                               rcType : []
+//                           })
      }
 
     Rectangle{
