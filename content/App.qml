@@ -247,6 +247,7 @@ ApplicationWindow {
         }
     }
 
+    signal changeScreenSignal()
 
     StackLayout {
         anchors.left: parent.left
@@ -276,6 +277,14 @@ ApplicationWindow {
             width:mainWindow.width
             height: mainWindow.height-120
             y : titleBar.height
+
+            Component.onCompleted: {
+                changeScreenSignal.connect(changeScreenSlot)
+            }
+        }
+
+        onCurrentIndexChanged: {
+            changeScreenSignal()
         }
 
     }
