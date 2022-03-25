@@ -15,6 +15,7 @@ Item {
 
     property bool mouseEvent
 
+    visible : (index === modelGroup.count -1)? false : true
 
 
    // property var index

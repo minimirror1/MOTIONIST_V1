@@ -271,6 +271,12 @@ ApplicationWindow {
             height: mainWindow.height-120
             y : titleBar.height
         }
+        MotorScreen{
+            id: motorScreen
+            width:mainWindow.width
+            height: mainWindow.height-120
+            y : titleBar.height
+        }
 
     }
 

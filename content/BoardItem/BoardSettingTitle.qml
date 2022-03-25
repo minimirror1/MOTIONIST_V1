@@ -215,10 +215,12 @@ Item {
 
     Text {
         id: groupNumText
+        width: 100
         color : MyColors.textMainColor
         text: qsTr("Group ")+((groupId===0)?qsTr(" ") :Number(groupId))
         anchors.bottom: groupNameText.top
         font.pixelSize: 30
+        horizontalAlignment: Text.AlignHCenter
         anchors.bottomMargin: 10
         font.family: "HelveticaRounded"
         anchors.horizontalCenterOffset: 0

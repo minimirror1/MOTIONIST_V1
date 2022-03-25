@@ -166,7 +166,7 @@ Item {
                 anchors.fill: item2
                 model: modelGroup
 
-                cacheItemCount : 1000
+                cacheItemCount : 65535
 
                 interactive: false
                 //interactive: true
