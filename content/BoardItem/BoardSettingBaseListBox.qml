@@ -82,7 +82,7 @@ Item {
             model: ListModel {
                 ListElement {
                     typeName: "EMPTY"
-                    colorCode: "#c4c4c4"
+                    colorCode: "#4f5052"
                 }
                 ListElement {
                     typeName: "AC"
@@ -95,6 +95,11 @@ Item {
             }
             onCurrentIndexChanged: {
                 motorType = listView.currentIndex
+
+                if(listView.currentIndex === 0)
+                    axisActive = false
+                else
+                    axisActive = true
                 //변경
 //                motorType = Qt.binding(function(){
 //                    return listView.currentIndex

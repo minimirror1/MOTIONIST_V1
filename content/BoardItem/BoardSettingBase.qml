@@ -24,12 +24,21 @@ Item {
             }
             console.log("non break")
             baseType.append({
-                                      subId : i+1,
-                                      axisActive : 0,
-                                      axisName : "",
-                                      motorType : 0
-                                  }
-                                  )
+                                subId : i+1,
+                                axisActive : false,
+                                axisName : "",
+                                motorType : 0,
+
+                                initNum : "0",
+                                rotDir : "CW",
+                                initPosi : "0",
+                                range : "0",
+                                gear : "0",
+                                cnt : "0",
+                                rpm : "0"
+
+                            }
+                            )
 
             //            listView.model.append({
             //                                  subId : i+1,

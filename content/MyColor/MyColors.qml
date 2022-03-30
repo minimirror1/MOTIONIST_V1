@@ -32,4 +32,7 @@ QtObject {
     readonly property color listBgColor : "#000000"
     readonly property color listDeselBgColor : "#1d1f22"
 
+    readonly property color listMotor1Color : "#2a2d31"
+    readonly property color listMotor2Color : "#121214"
+
 }

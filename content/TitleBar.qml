@@ -22,7 +22,7 @@ Item {
             anchors.bottom: parent.bottom
             font.pixelSize: 41
             verticalAlignment: Text.AlignVCenter
-            font.family: "HelveticaRounded"
+            font.family: "GentleMonster"
             leftPadding: 30
             font.bold: true
         }
@@ -67,8 +67,4 @@ Item {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.33}D{i:2}D{i:1}
-}
-##^##*/
+

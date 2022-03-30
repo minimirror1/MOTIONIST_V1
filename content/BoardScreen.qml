@@ -191,7 +191,7 @@ Item {
                     }
 
 
-                pathItemCount: 3
+                pathItemCount: (modelGroup.count <= 4)?3:5
                 preferredHighlightEnd: 0.5
                 preferredHighlightBegin: 0.5
 
@@ -201,7 +201,7 @@ Item {
 
                 path: Path {
                     startX: item2.width * 0.5
-                    startY: -550
+                    startY: (modelGroup.count <= 4)?-550:-1200
 
                     PathAttribute { name: "opacity"; value: 0.05 }
                     PathAttribute { name: "z"; value: 50 }
@@ -218,7 +218,7 @@ Item {
 
                     PathLine {
                         x: item2.width *0.5
-                        y: item2.height+550
+                        y: item2.height+((modelGroup.count <= 4)?550:1200)
                     }
 
                     PathAttribute { name: "opacity"; value: 0.05 }

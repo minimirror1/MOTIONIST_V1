@@ -8,7 +8,31 @@ Item {
     width: 1536
     height: 100
 
+    function groupNumChange(order){
 
+
+        if(order === 1)//plus
+        {
+            console.log("plus order")
+
+            if(++currentGroupIndex >= setGroupIndex.length)
+                currentGroupIndex = 0
+        }
+        else if(order === -1)
+        {
+            console.log("minus order")
+
+            if(--currentGroupIndex < 1)
+                currentGroupIndex = setGroupIndex.length - 1
+
+        }
+        groupId = modelGroup.get(setGroupIndex[currentGroupIndex]).groupId
+
+        toggle = true
+
+        currentModel = []
+        currentModel = modelGroup.get(setGroupIndex[currentGroupIndex])
+    }
 
 
 
@@ -26,7 +50,7 @@ Item {
             id: groupNumText
             width: 100
             color : MyColors.textMainColor
-            text: qsTr("Group ")
+            text: qsTr("Group ") + groupId
             anchors.verticalCenter: parent.verticalCenter
             //anchors.bottom: groupNameText.top
             font.pixelSize: 30
@@ -133,7 +157,7 @@ Item {
             width: 200
             height: 30
             color : MyColors.textMainColor
-            text: (!findFlag)?"":(currentModel.groupName.length === 0)? "TextInput" : currentModel.groupName
+            text: (!findFlag)?" ": (currentModel.groupName.length===0)?" ":currentModel.groupName
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             font.pixelSize: 26
