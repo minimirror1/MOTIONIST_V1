@@ -44,6 +44,8 @@ ApplicationWindow {
 
     minimumWidth: 1536
     minimumHeight: 864
+    maximumWidth: 1920
+    maximumHeight: 1080
 
 
 
@@ -274,6 +276,16 @@ ApplicationWindow {
         }
         MotorScreen{
             id: motorScreen
+            width:mainWindow.width
+            height: mainWindow.height-120
+            y : titleBar.height
+
+            Component.onCompleted: {
+                changeScreenSignal.connect(changeScreenSlot)
+            }
+        }
+        MidiScreen{
+            id: midiScreen
             width:mainWindow.width
             height: mainWindow.height-120
             y : titleBar.height
