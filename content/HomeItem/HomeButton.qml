@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import "../MyColor"
+import Qt5Compat.GraphicalEffects 6.0
+
 
 Item {
     id: item1
@@ -23,8 +25,8 @@ Item {
         border.color: MyColors.buttonMainColor
         border.width: 1
         anchors.fill: parent
-        anchors.leftMargin: 10
-        anchors.topMargin: 10
+        anchors.leftMargin: 5
+        anchors.topMargin: 5
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
     }
@@ -34,38 +36,69 @@ Item {
         color : MyColors.buttonMainColor
         radius: 5
         anchors.fill: parent
-        anchors.bottomMargin: 10
-        anchors.rightMargin: 10
+        anchors.bottomMargin: 5
+        anchors.rightMargin: 5
+
+
+
+
 
         Text {
             id: text1
-            y: 369
+            y: (text2.text === " ")? 317 :303
             width: 170
             height: 35
             color: MyColors.textMainColor
             text: qsTr("NEW ")
-            font.pixelSize: 30
+            font.pixelSize: 24
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            rightPadding: 0
+            anchors.horizontalCenterOffset: 0
             anchors.horizontalCenter: parent.horizontalCenter
             textFormat: Text.RichText
             font.family: "HelveticaRounded"
+
+
+
         }
+        DropShadow {
+                anchors.fill: text1
+                source: text1
+                horizontalOffset: 2
+                verticalOffset: 2
+                color: "#000000"//"#80000000"
+                radius: 1
+         }
+
 
         Text {
             id: text2
-            y: 410
             width: 170
             height: 35
             color: MyColors.textMainColor
             text: qsTr("PROJECT")
-            font.pixelSize: 30
+            anchors.top: text1.bottom
+            font.pixelSize: 24
             horizontalAlignment: Text.AlignHCenter
+            anchors.topMargin: -5
+            rightPadding: 0
             anchors.horizontalCenterOffset: 0
             textFormat: Text.RichText
             font.family: "HelveticaRounded"
             anchors.horizontalCenter: parent.horizontalCenter
+
         }
+        DropShadow {
+                anchors.fill: text2
+                source: text2
+                horizontalOffset: 2
+                verticalOffset: 2
+                color: "#000000"//"#80000000"
+                radius: 1
+         }
+
+
 
         MouseArea{
             id: mouseArea
@@ -107,13 +140,14 @@ Item {
                 */
             }
         }
+
     }
 
     Image {
         id: image
-        y: 129
-        width: 100
-        height: 100
+        y: 130
+        width: 80
+        height: 80
         source: "../images/Home/openproject.png"
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
@@ -122,10 +156,11 @@ Item {
 
     Image {
         id: image_on
-        y: 129
-        width: 100
-        height: 100
+        y: image.y
+        width: 80
+        height: 80
         source: "../images/Home/openproject_on.png"
+        anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         visible: false
@@ -135,6 +170,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.33}D{i:1}D{i:3}D{i:4}D{i:2}D{i:6}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

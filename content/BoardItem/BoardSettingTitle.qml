@@ -193,7 +193,8 @@ Item {
         color : MyColors.textMainColor
         text: qsTr("BOARD TYPE")
         anchors.verticalCenter: item1.verticalCenter
-        font.pixelSize: 30
+        font.pixelSize: 16
+        font.family: "Helvetica-Light"
         anchors.horizontalCenter: parent.horizontalCenter
 
 
@@ -235,9 +236,10 @@ Item {
         color : MyColors.textMainColor
         text: (groupName.length === 0)? "TextInput" : groupName
         anchors.bottom: parent.bottom
-        font.pixelSize: 26
+        font.pixelSize: 20
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        font.family: "HYGothic-Extra"
         anchors.bottomMargin: 10
         cursorVisible: true
         anchors.horizontalCenter: parent.horizontalCenter
@@ -345,7 +347,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:2}D{i:3}D{i:1}D{i:6}D{i:5}D{i:9}D{i:10}D{i:11}D{i:13}
-D{i:12}D{i:16}D{i:15}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

@@ -10,20 +10,74 @@ Item {
     height: 864
 
 
+    property int currentGroupIndex : 0
+    property var currentTypeModel : []
+    property var cuurentGroupModel : []
+    property var groupId
+    property var groupName
+
+    property int curIndex
+
     signal newWHValuesignal()
-    signal mouseChangeXYsignal(var posiX, var posiY)
+    signal mouseChangeXYsignal(var posiX, var posiY, var s_groupId, var s_subId, var s_axisName)
+
+    signal assignAxisToMidiSignal(var posiX, var posiY, var s_groupId, var s_subId, var s_axisName)
+
+    function newMidiPageSlot()
+    {
+        midiGroup.append({
+                             index : midiGroup.count,
+                             page : midiGroup.count+1,
+                             pageName : "",
+                             slot : []
+                         })
+
+        var slotTemp = []
+
+        slotTemp = midiGroup.get(midiGroup.count-1).slot
+
+        for(var i = 0; i<8; i++)
+        {
+            slotTemp.append({
+                                assignId: " ",
+                                assignName: " "
+                            })
+        }
+        newWHValuesignal()
+    }
 
     function mouseChangeXYslot(posiX, posiY){
-        console.log("slot : " + posiX+"  x  "+posiY)
+        //console.log("slot : " + posiX+"  x  "+posiY)
     }
 
     Component.onCompleted: {
         mouseChangeXYsignal.connect(mouseChangeXYslot)
+
+        midiGroup.clear()
+        midiGroup.append({
+                             index : midiGroup.count,
+                             page : midiGroup.count+1,
+                             pageName : "",
+                             slot : []
+                         })
+
+        var slotTemp = []
+
+        slotTemp = midiGroup.get(0).slot
+
+        for(var i = 0; i<8; i++)
+        {
+            slotTemp.append({
+                                assignId: " ",
+                                assignName: " "
+                            })
+        }
     }
 
 
     function changeScreenSlot(){
         newWHValuesignal()
+        groupNumChange(1)
     }
 
     function groupNumChange(order){
@@ -32,22 +86,40 @@ Item {
         if(order === 1)//plus
         {
             console.log("plus order")
-
-            if(++currentGroupIndex >= setGroupIndex.length)
+            if(++currentGroupIndex >= modelGroup.count)
                 currentGroupIndex = 0
         }
         else if(order === -1)
         {
             console.log("minus order")
-
-            if(--currentGroupIndex < 1)
-                currentGroupIndex = setGroupIndex.length - 1
-
+            if(--currentGroupIndex < 0 )
+                currentGroupIndex = modelGroup.count - 1
         }
-        groupId = modelGroup.get(setGroupIndex[currentGroupIndex]).groupId
+        console.log("그룹 길이 : " + modelGroup.count + ", current group index : ",currentGroupIndex)
+        groupId = modelGroup.get(currentGroupIndex).groupId
+        groupName = modelGroup.get(currentGroupIndex).groupName
 
-        currentModel = []
-        currentModel = modelGroup.get(setGroupIndex[currentGroupIndex])
+        cuurentGroupModel = []
+        cuurentGroupModel = modelGroup.get(currentGroupIndex)
+
+        currentTypeModel = []
+
+        if(modelGroup.get(currentGroupIndex).mode === 2)
+        {
+            currentTypeModel = modelGroup.get(currentGroupIndex).baseType
+        }
+        else if(modelGroup.get(currentGroupIndex).mode === 3)
+        {
+            currentTypeModel = modelGroup.get(currentGroupIndex).rcType
+        }
+        else if(modelGroup.get(currentGroupIndex).mode === 4)
+        {
+            currentTypeModel = modelGroup.get(currentGroupIndex).dyTtlType
+        }
+        else if(modelGroup.get(currentGroupIndex).mode === 5)
+        {
+            currentTypeModel = modelGroup.get(currentGroupIndex).dy485Type
+        }
     }
 
 
@@ -60,20 +132,24 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-//        Rectangle{
-//            anchors.fill: parent
-//            color: "#555555"
-//        }
+        //        Rectangle{
+        //            anchors.fill: parent
+        //            color: "#555555"
+        //        }
+
+
 
 
         PathView {
             id: pathView
             anchors.fill: item2
-            model: modelGroup
+            model: midiGroup
 
             cacheItemCount : 65535
 
             //interactive: false
+
+
             //interactive: true
 
             delegate: MidiListBox {
@@ -87,9 +163,14 @@ Item {
 
                 Component.onCompleted: {
                     newWHValuesignal.connect(newWHValueslot)
+                    newMidiPageSignal.connect(newMidiPageSlot)
                 }
 
 
+            }
+            onCurrentIndexChanged: {
+                newWHValuesignal()
+                curIndex  =  currentIndex
             }
 
 
@@ -128,6 +209,27 @@ Item {
             }
         }
 
+        MouseArea {
+            anchors.fill : parent
+            anchors.topMargin: 200
+
+            //cursorShape: setBitmapCursor("qrc:/skin/cursor_rotate")//Qt.ClosedHandCursor
+
+            onWheel:
+            {
+                if( wheel.angleDelta.y > 0 ){
+                    if(pathView.currentIndex !== 0)
+                        pathView.incrementCurrentIndex();
+                }
+                else{
+                    if(pathView.currentIndex < midiGroup.count )
+                        pathView.decrementCurrentIndex();
+                }
+            }
+        }
+
+
+
     }
     Item {
         id: item1
@@ -138,16 +240,16 @@ Item {
 
         Item {
             id: item7
-            anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
+            anchors.horizontalCenter: gridView.horizontalCenter
             height: 100
 
             Text {
                 id: groupNumText
                 width: 100
                 color : MyColors.textMainColor
-                text: qsTr("Group ")// + groupId
+                text: qsTr("Group ") + groupId
                 anchors.verticalCenter: parent.verticalCenter
                 //anchors.bottom: groupNameText.top
                 font.pixelSize: 30
@@ -240,12 +342,27 @@ Item {
             }
         }
 
+
+        Text {
+            id: text1
+            height: 30
+            text: groupName
+            color : MyColors.textMainColor
+            anchors.top: item7.bottom
+            font.pixelSize: 16
+            anchors.topMargin: -10
+            font.family: "HYGothic-Extra"
+            anchors.horizontalCenter: gridView.horizontalCenter
+        }
+
         GridView {
             id: gridView
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: item7.bottom
+            anchors.top: text1.bottom
             anchors.bottom: parent.bottom
+            anchors.rightMargin: -36
+            anchors.leftMargin: 20
             flow: GridView.FlowTopToBottom
 
             cellWidth: gridView.width/2//14 + 240
@@ -254,107 +371,46 @@ Item {
             interactive : false
 
 
+
             delegate: MidiAxisBox{
-                width : gridView.width/2 - 0
-                height: gridView.height/14 - 0
+                width : gridView.width/2
+                height: gridView.height/14
             }
 
-            model: ListModel {
-                ListElement {
-                    name: "Grey"
-                    colorCode: "grey"
-                }
-
-                ListElement {
-                    name: "Red"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Blue"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-            }
+            model: currentTypeModel
         }
 
-        //        ListView {
-        //            id: listView
-        //            anchors.left: parent.left
-        //            anchors.right: parent.right
-        //            anchors.top: text1.bottom
-        //            anchors.bottom: parent.bottom
-        //            anchors.topMargin: 50
-
-        //            model: modelGroup
-
-        //            cacheBuffer: 65535
-
-        //            spacing : 10
-        //            delegate:  BoardGroupAddBtn {
-        //                id : boardGroupAddBtn
-        //                anchors.left: parent.left
-        //                anchors.right: parent.right
-        //                anchors.margins: parent.width/5
-        //                height: width / 3.5
-
-        //                //boardTypeText.text : changeModeText()
-
-        //                Component.onCompleted: {
-        //                    groupAddSignal.connect(groupAddSlot)
-        //                    selectSignal.connect(selectSlot)
-        //                }
-        //            }
-        //        }
     }
+
+    //        ListView {
+    //            id: listView
+    //            anchors.left: parent.left
+    //            anchors.right: parent.right
+    //            anchors.top: text1.bottom
+    //            anchors.bottom: parent.bottom
+    //            anchors.topMargin: 50
+
+    //            model: modelGroup
+
+    //            cacheBuffer: 65535
+
+    //            spacing : 10
+    //            delegate:  BoardGroupAddBtn {
+    //                id : boardGroupAddBtn
+    //                anchors.left: parent.left
+    //                anchors.right: parent.right
+    //                anchors.margins: parent.width/5
+    //                height: width / 3.5
+
+    //                //boardTypeText.text : changeModeText()
+
+    //                Component.onCompleted: {
+    //                    groupAddSignal.connect(groupAddSlot)
+    //                    selectSignal.connect(selectSlot)
+    //                }
+    //            }
+    //        }
+}
 
 //    Rectangle{
 
@@ -380,10 +436,10 @@ Item {
 //        color : "#55832158"
 //    }
 
-}
+
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}D{i:26}
+    D{i:0;formeditorZoom:0.75}D{i:26}
 }
 ##^##*/

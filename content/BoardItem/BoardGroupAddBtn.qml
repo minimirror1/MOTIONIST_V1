@@ -43,7 +43,7 @@ Item {
     Rectangle {
         id: rectangle
         color: MyColors.buttonMainColor
-        radius: 10
+        radius: 5
         anchors.fill: parent
 
         Text {
@@ -52,10 +52,10 @@ Item {
             text: qsTr("+")
             visible : (mode === 0)? true:false
             anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 50
+            font.pixelSize: 30
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            anchors.verticalCenterOffset: -5
+            anchors.verticalCenterOffset: -3
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaRounded-Black"
         }
@@ -64,18 +64,19 @@ Item {
             id: groupText
             y: parent.height /3 -10
             color: textColor
-            text: qsTr("Group ")
+            text: qsTr("GROUP ")
             visible : (mode >= 1)? true:false
             font.pixelSize: 16
+            font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "HelveticaRounded"
+            font.family: "Helvetica 55 Roman"
 
             Component.onCompleted: {
                 groupText.text = Qt.binding(function(){
                     if(groupId === 0)
-                        return qsTr("Group ")
+                        return qsTr("GROUP ")
                     else
-                        return qsTr("Group ") + Number(groupId)
+                        return qsTr("GROUP ") + Number(groupId)
                 })
             }
         }
@@ -90,7 +91,7 @@ Item {
             visible : (mode >= 2)? true:false
             font.pixelSize: 12
             anchors.horizontalCenterOffset: 0
-            font.family: "Helvetica-Light"
+            font.family: "HelveticaRounded"
             anchors.horizontalCenter: parent.horizontalCenter
 
             Component.onCompleted: {
@@ -190,6 +191,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:2}D{i:2}D{i:3}D{i:4}D{i:1}
+    D{i:0;formeditorZoom:2}
 }
 ##^##*/

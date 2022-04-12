@@ -10,18 +10,6 @@ Item {
     property alias text_id: text_id
     property alias text_name: text_name
 
-    Text {
-        id: text_name
-        height: midiSlotText.height/2
-        color : MyColors.textHoverColor
-        text: qsTr("Text")
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        font.pixelSize: 20
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
 
     Text {
         id: text_id
@@ -31,27 +19,28 @@ Item {
         anchors.right: parent.right
         anchors.top: text_name.bottom
         anchors.bottom: parent.bottom
-        font.pixelSize: 20
+        font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        fontSizeMode: Text.FixedSize
     }
 
 
-    MouseArea
-    {
-        anchors.fill: parent
-        hoverEnabled : true
-        preventStealing : true
-        onEntered: {
-            text_id.color = MyColors.textMainColor
-        }
-        onExited: {
-            text_id.color = MyColors.textHoverColor
-        }
-        onPressed: {
-            console.log("owwowowow")
-        }
-    }
+    //    MouseArea
+    //    {
+//        anchors.fill: parent
+//        hoverEnabled : true
+//        preventStealing : true
+//        onEntered: {
+//            text_id.color = MyColors.textMainColor
+//        }
+//        onExited: {
+//            text_id.color = MyColors.textHoverColor
+//        }
+//        onPressed: {
+//            console.log("owwowowow")
+//        }
+//    }
 
 //    Rectangle
 //    {
@@ -60,4 +49,24 @@ Item {
 //        anchors.fill: parent
 
 //    }
+    Text {
+        id: text_name
+        height: 36
+        color : MyColors.textHoverColor
+        text: qsTr("Textddddssssss")
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        font.pixelSize: 20
+        fontSizeMode: Text.Fit
+        minimumPixelSize: 10
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.75}D{i:1}D{i:2}
+}
+##^##*/

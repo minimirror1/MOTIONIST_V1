@@ -52,7 +52,27 @@ ApplicationWindow {
     visible: true
     title: "MOTIONIST_V1"
 
-    //flags: Qt.Window|Qt.FramelessWindowHint
+    flags: Qt.Window|Qt.FramelessWindowHint
+    //flags: Qt.FramelessWindowHint
+
+
+
+    ListModel{
+        id : midiGroup
+
+    }
+
+    FontLoader { id: gentleMonster; source: "fonts/GentleMonster Condensed.ttf" }
+    FontLoader { id: helveticaRounded; source: "fonts/H2GTRE.TTF" }
+    FontLoader { id: helveticaRoundedBlack; source: "fonts/Helvetica Rounded Black.ttf" }
+    FontLoader { id: helveticaroundedbold; source: "fonts/Helvetica Rounded Bold.ttf" }
+    FontLoader { id: helvetica_75; source: "fonts/Helvetica-75-Bold_22447.ttf" }
+    FontLoader { id: malgun; source: "fonts/malgun.ttf" }
+    FontLoader { id: malgunbd; source: "fonts/malgunbd.ttf" }
+    FontLoader { id: malgunsl; source: "fonts/malgunsl.ttf" }
+
+
+
 
 
     ListModel{
@@ -100,6 +120,7 @@ ApplicationWindow {
 
      Component.onCompleted: {
      console.log("start")
+
 
 //         modelGroup.append({
 //                               index: modelGroup.count,

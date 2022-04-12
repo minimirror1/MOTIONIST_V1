@@ -19,10 +19,10 @@ Item {
         {
             if(baseType.count >=10)
             {
-                console.log("break")
+                //console.log("break")
                 break;
             }
-            console.log("non break")
+            //console.log("non break")
             baseType.append({
                                 subId : i+1,
                                 axisActive : false,
@@ -48,7 +48,7 @@ Item {
             //                              }
             //                              )
         }
-        console.log("creat    list")
+        //console.log("creat    list")
 
     }
 
@@ -74,8 +74,8 @@ Item {
             id: listView
             anchors.fill: parent
             spacing: 14
-            anchors.rightMargin: 20
-            anchors.leftMargin: 20
+            anchors.rightMargin: 20 + 50
+            anchors.leftMargin: 20 + 50
             anchors.bottomMargin: 20
             anchors.topMargin: 20
             interactive : false
@@ -85,7 +85,7 @@ Item {
                 y: 35
                 anchors.left: parent.left
                 anchors.right: parent.right
-
+                height: (listView.height - listView.spacing*9)/11
 
                 //anchors.rightMargin: 20
                 //anchors.leftMargin: 20

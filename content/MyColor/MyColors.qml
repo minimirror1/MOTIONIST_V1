@@ -27,6 +27,8 @@ QtObject {
     readonly property color textSelectColor : "#000000"
     readonly property color textDeselectColor : "#4f5052"
 
+    readonly property color textOutlineColor : "#2a2d31"
+
     //box
     readonly property color boxBgColor : "#2a2d31"
     readonly property color listBgColor : "#000000"

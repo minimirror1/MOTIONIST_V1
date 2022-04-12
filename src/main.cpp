@@ -29,6 +29,8 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QFontDatabase>
+#include <QIcon>
 
 #include "app_environment.h"
 #include "import_qml_plugins.h"
@@ -39,9 +41,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    QIcon icon(":gentleicon.ico");
+    app.setWindowIcon(icon);
+
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:Main/main.qml"_qs);
-
 
     QObject::connect(
                 &engine, &QQmlApplicationEngine::objectCreated, &app,
@@ -61,4 +65,5 @@ int main(int argc, char *argv[])
     }
 
     return app.exec();
+
 }

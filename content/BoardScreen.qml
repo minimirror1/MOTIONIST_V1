@@ -23,7 +23,7 @@ Item {
         //modelGroup.sync()
         modelGroup.append({
                               index: modelGroup.count,
-                              mode : 0,
+                              mode : 0, //base = 2, rc = 3, dyTTL = 4, dy485 = 5
                               selected : 0,
                               groupId : 0,
                               groupName : "",
@@ -113,7 +113,8 @@ Item {
             font.pixelSize: 30
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.family: "HelveticaRounded"
+            font.bold: true
+            font.family: "Helvetica 55 Roman"
             anchors.rightMargin: 49
             anchors.leftMargin: 50
             anchors.topMargin: 50
@@ -287,6 +288,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}D{i:2}D{i:1}D{i:4}D{i:3}
+    D{i:0;formeditorZoom:0.5}
 }
 ##^##*/

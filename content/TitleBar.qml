@@ -2,10 +2,9 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import "./MyColor"
-
 Item {
     width: 1920
-    height: 60
+    height: 40
 
     Rectangle {
         id: rectangle
@@ -20,10 +19,10 @@ Item {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            font.pixelSize: 41
+            font.pixelSize: 26
             verticalAlignment: Text.AlignVCenter
             font.family: "GentleMonster"
-            leftPadding: 30
+            leftPadding: 10
             font.bold: true
         }
     }
@@ -38,7 +37,6 @@ Item {
             left: parent.left
             right: parent.right
         }
-
         onPressed: {
             previousX = mouseX
             previousY = mouseY
@@ -55,16 +53,46 @@ Item {
         }
     }
 
-    Button {
-        id: button
+//    Button {
+//        id: button
+//        anchors.right: parent.right
+//        anchors.rightMargin: 75
+//        x: 1781
+//        y: 0
+//        text: qsTr("x")
+//        onClicked: {
+//            mainWindow.close()
+//        }
+//    }
+
+    Image {
+        id: exitBtn
         anchors.right: parent.right
-        x: 1837
-        y: 6
-        text: qsTr("x")
-        onClicked: {
-            mainWindow.close()
+        y: 0
+        source: "images/Home/x.png"
+        fillMode: Image.PreserveAspectFit
+
+        MouseArea{
+            anchors.fill : parent
+            hoverEnabled: true
+
+            onEntered: {
+                exitBtn.source = "images/Home/x_hover.png"
+            }
+            onExited: {
+                exitBtn.source = "images/Home/x.png"
+            }
+            onClicked: {
+                mainWindow.close()
+            }
         }
     }
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.1}
+}
+##^##*/

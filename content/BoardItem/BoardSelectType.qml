@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import "../MyColor"
-import QtQuick.Studio.Effects 1.0
+//import QtQuick.Studio.Effects 1.0
 
 
 // mode 0 : select

@@ -43,5 +43,4 @@ qt6_add_qml_module(content
         images/Home
         images/Midi
         images/Motor
-
 )

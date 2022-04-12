@@ -50,7 +50,7 @@ Item {
             id: groupNumText
             width: 100
             color : MyColors.textMainColor
-            text: qsTr("Group ") + groupId
+            text: qsTr("GROUP ") + groupId
             anchors.verticalCenter: parent.verticalCenter
             //anchors.bottom: groupNameText.top
             font.pixelSize: 30
@@ -163,6 +163,7 @@ Item {
             font.pixelSize: 26
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            font.family: "HYGothic-Extra"
             anchors.leftMargin: isoMargin
             cursorVisible: true
             onActiveFocusChanged: {
@@ -185,6 +186,7 @@ Item {
         id: rectangle
         x: parent.width/4
         width: 1
+        visible: false
 
         color: "#ffffff"
         anchors.top: parent.top
@@ -197,6 +199,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.25}D{i:1}D{i:10}D{i:9}D{i:11}
+    D{i:0;formeditorZoom:1.25}
 }
 ##^##*/

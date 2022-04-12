@@ -65,8 +65,8 @@ Item {
 
             anchors.topMargin: 100
 
-            width: parent.width * 0.8
-            height: (30+14)*7
+            width: parent.width * 0.85
+            height: (30 + 14 + 5)*7
 
             cellWidth: gridView.width/2//14 + 240
             cellHeight: gridView.height/5 // 14 + 30
@@ -77,8 +77,8 @@ Item {
 
             delegate: BoardSettingDynamicListBox{
                 id : boardSettingDynamicListBox
-                width : gridView.width/2 - 150
-                height: gridView.height/5 - 14
+                width : gridView.width/2 - 130
+                height: gridView.height/5 - 20
 
                 Component.onCompleted: {
                     nextTextinputFocus.connect(nextTextinputFocusSlot)

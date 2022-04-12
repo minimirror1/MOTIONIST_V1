@@ -53,7 +53,7 @@ Item {
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
 
                 width: parent.width/10*2
             }
@@ -68,7 +68,7 @@ Item {
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
 
                 width: parent.width/10*3
 
@@ -94,7 +94,7 @@ Item {
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
 
                 width: parent.width/10*5
 
@@ -158,7 +158,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 inputMask: {"00"}
                 onActiveFocusChanged: {
                     if(activeFocus)
@@ -258,7 +258,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 inputMask: {"0000"}
                 onActiveFocusChanged: {
                     if(activeFocus)
@@ -303,7 +303,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 inputMask: {"000.00"}
                 onActiveFocusChanged: {
                     if(activeFocus)
@@ -348,7 +348,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 inputMask: {"000"}
                 onActiveFocusChanged: {
                     if(activeFocus)
@@ -407,7 +407,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 visible:(text_ac.text === "BLDC")? true : false
                 inputMask: {"00000"}
                 onActiveFocusChanged: {
@@ -453,7 +453,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
-                font.family: "HYGothic-Extra"
+                font.family: "Helvetica-Light"
                 visible:(text_ac.text === "BLDC")? true : false
                 inputMask: {"00000"}
                 onActiveFocusChanged: {
@@ -492,6 +492,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:8}
+    D{i:0;formeditorZoom:1.33}
 }
 ##^##*/

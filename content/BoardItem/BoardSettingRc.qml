@@ -53,12 +53,15 @@ Item {
             anchors.top:parent.top
             anchors.right: parent.right
             anchors.left: parent.left
+            anchors.bottom: parent.bottom
 
-            anchors.rightMargin: -10
-            anchors.leftMargin: 20
+
+            anchors.rightMargin: -10 + 20
+            anchors.leftMargin: 20 + 20
             anchors.topMargin: 20
+            anchors.bottomMargin: 150
 
-            height: (30+14)*7
+            //height: (30+14)*7
 
             cellWidth: gridView.width/4//14 + 240
             cellHeight: gridView.height/7 // 14 + 30

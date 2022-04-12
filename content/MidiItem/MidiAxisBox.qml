@@ -19,7 +19,7 @@ Item {
     Rectangle {
         id: rectangle
         color: MyColors.boxBgColor
-        radius: 5
+        radius: 3
         anchors.fill: parent
         anchors.rightMargin: 8
         anchors.leftMargin: 8
@@ -29,21 +29,22 @@ Item {
         Text {
             id: text1
             width: 50
-            color: "#ffffff"
-            text: qsTr("1-10")
+            color: MyColors.textMainColor
+            text: groupId+"-"+subId
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            font.pixelSize: 20
+            font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            fontSizeMode: Text.HorizontalFit
             font.family: "HelveticaRounded-Black"
         }
 
         Text {
             id: text3
-            color: "#ffffff"
-            text: qsTr("AAAAAAAAAA")
+            color: MyColors.textMainColor
+            text: axisName
             anchors.left: text1.right
             anchors.right: parent.right
             anchors.top: parent.top
@@ -64,7 +65,21 @@ Item {
         //console.log(Math.round(x) + " x "+ Math.round(y))
         //mouseChangeXYsignal(midiAxisBox.x, midiAxisBox.y+100)
 
-        mouseChangeXYsignal(midiAxisBox.x + dragMouse.mouseX, midiAxisBox.y+ dragMouse.mouseY+100)
+        mouseChangeXYsignal(midiAxisBox.x + dragMouse.mouseX, midiAxisBox.y+ dragMouse.mouseY+100,groupId, subId, axisName)
+
+        if((547.542725 <= midiAxisBox.x + dragMouse.mouseX)&&(midiAxisBox.x + dragMouse.mouseX <= 547.542725+(103.1142*8))&&
+                (205 <= midiAxisBox.y+ dragMouse.mouseY+100)&&(midiAxisBox.y+ dragMouse.mouseY+100 <= 205+300))
+        {
+            rectangle.color = MyColors.textMainColor
+            text1.color = MyColors.boxBgColor
+            text3.color = MyColors.boxBgColor
+        }
+        else
+        {
+            rectangle.color = MyColors.boxBgColor
+            text1.color = MyColors.textMainColor
+            text3.color = MyColors.textMainColor
+        }
 
         //mouseChangeXYsignal(dragMouse.mouse.x, dragMouse.mouse.y)//+100)
     }
@@ -85,10 +100,17 @@ Item {
         onPressed: {
             origenX = parent.x
             origenY = parent.y
+            midiAxisBox.opacity = 0.5
+
         }
         onReleased: {
+            assignAxisToMidiSignal(midiAxisBox.x + dragMouse.mouseX, midiAxisBox.y+ dragMouse.mouseY+100, groupId, subId, axisName)
             parent.x = origenX
             parent.y = origenY
+            midiAxisBox.opacity = 1
+            rectangle.color = MyColors.boxBgColor
+            text1.color = MyColors.textMainColor
+            text3.color = MyColors.textMainColor
         }
     }
 

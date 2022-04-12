@@ -26,18 +26,21 @@ Item {
 
     Image {
         id: btnImg
+        width: 136
         source: "../images/Board/BASE.png"
+        anchors.topMargin: 50
+        anchors.horizontalCenter: parent.horizontalCenter
 //        sourceSize.width: btnImg.width * 2/3
 //        sourceSize.height: btnImg.height * 2/3
-        anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         visible: true
         anchors.top: parent.top
     }
     Image {
         id: btnImg_on
+        width: 136
         source: "../images/Board/BASE_on.png"
-        anchors.topMargin: 0
+        anchors.topMargin: 50
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         visible: false
@@ -45,7 +48,9 @@ Item {
     }
     Image{
         id: btnImg_pre
+        width: 136
         source: "../images/Board/BASE_pre.png"
+        anchors.topMargin: 50
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         visible: false
@@ -62,10 +67,11 @@ Item {
         anchors.top: parent.top
         font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter
+        styleColor: MyColors.textOutlineColor
         layer.smooth: true
         anchors.topMargin: 170
         style: Text.Outline
-        font.family: "HelveticaRounded-Black"
+        font.family: "HelveticaRounded"
     }
 
     Text {
@@ -78,10 +84,11 @@ Item {
         anchors.top: text1.bottom
         font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter
+        styleColor: MyColors.textOutlineColor
         layer.smooth: true
         anchors.topMargin: 5
         style: Text.Outline
-        font.family: "HelveticaRounded-Black"
+        font.family: "HelveticaRounded"
     }
 
     MouseArea{
@@ -138,6 +145,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.25}D{i:1}D{i:4}D{i:5}
+    D{i:0;formeditorZoom:2}
 }
 ##^##*/

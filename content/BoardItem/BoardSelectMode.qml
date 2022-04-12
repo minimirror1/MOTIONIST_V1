@@ -28,8 +28,8 @@ Item {
         Rectangle {
             id: rectangle1
             width: 1
-            height: 300
-            color: "#d1cdc8"
+            height: 250
+            color: "#48d1cdc8"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -144,9 +144,15 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         style: Text.Outline
         layer.smooth: true
-        font.family: "HelveticaRounded-Black"
+        font.family: "HYGothic-Extra"
         anchors.topMargin: 50
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.1}
+}
+##^##*/
