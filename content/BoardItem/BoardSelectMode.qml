@@ -142,6 +142,7 @@ Item {
         anchors.top: parent.top
         font.pixelSize: 36
         horizontalAlignment: Text.AlignHCenter
+        styleColor: "#2a2d31"
         style: Text.Outline
         layer.smooth: true
         font.family: "HYGothic-Extra"
@@ -153,6 +154,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.1}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

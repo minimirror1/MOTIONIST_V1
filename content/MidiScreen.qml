@@ -249,13 +249,13 @@ Item {
                 id: groupNumText
                 width: 100
                 color : MyColors.textMainColor
-                text: qsTr("Group ") + groupId
+                text: qsTr("GROUP ") + groupId
                 anchors.verticalCenter: parent.verticalCenter
                 //anchors.bottom: groupNameText.top
                 font.pixelSize: 30
                 horizontalAlignment: Text.AlignHCenter
                 anchors.bottomMargin: 10
-                font.family: "HelveticaRounded"
+                font.family: "Helvetica 55 Roman"
                 anchors.horizontalCenterOffset: 0
                 anchors.horizontalCenter: parent.horizontalCenter
             }

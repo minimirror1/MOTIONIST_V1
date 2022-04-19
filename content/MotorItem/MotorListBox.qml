@@ -263,6 +263,12 @@ Item {
                 anchors.leftMargin: 0
                 font.family: "Helvetica-Light"
                 inputMask: {"0000"}
+                validator: IntValidator { bottom:0; top: 4095}
+                onTextChanged: {
+                    if(initposiInput.text >= 4095)
+                        initposiInput.text = 4095
+                }
+
                 onActiveFocusChanged: {
                     if(activeFocus)
                     {
@@ -308,7 +314,23 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 anchors.leftMargin: 0
                 font.family: "Helvetica-Light"
-                inputMask: {"000.00"}
+                maximumLength: 6
+                //inputMask: {"000.00"}
+                //validator: IntValidator { bottom:0; top: 36000}
+                validator: DoubleValidator {
+                                top: 360; // 100 is the maximum acceptable value (More than 100 its not acceptable & onAccepted will not be called).
+                                bottom: 0;
+                                decimals: 2;
+                                notation: DoubleValidator.StandardNotation
+                }
+
+                onTextChanged: {
+                    if(rangeInput.text >360)
+                        rangeInput.text = 360
+
+
+                }
+
                 onActiveFocusChanged: {
                     if(activeFocus)
                     {
@@ -400,6 +422,40 @@ Item {
                     rangeInput.selectAll()
                 }
             }
+
+            //ac
+            Text{
+                id : cntTextac
+                width: parent.width/7
+                color: MyColors.textMainColor
+                text: "10000 (fix)"
+                anchors.left: gearInput.right
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                anchors.leftMargin: 0
+                font.family: "Helvetica-Light"
+                visible:(text_ac.text === "BLDC")? false : true
+            }
+            Text{
+                id : rpmTextac
+                width: parent.width/7
+                color: MyColors.textMainColor
+                text: "3000 (fix)"
+                anchors.left: cntTextac.right
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                anchors.leftMargin: 0
+                font.family: "Helvetica-Light"
+                visible:(text_ac.text === "BLDC")? false : true
+            }
+
+            //bldc
             TextInput {
                 id: cntInput
                 width: parent.width/7
@@ -499,6 +555,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.33}
+    D{i:0;formeditorZoom:1.1}
 }
 ##^##*/

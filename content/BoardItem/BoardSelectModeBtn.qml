@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import "../MyColor"
+import Qt5Compat.GraphicalEffects 6.0
 
 Item {
     id: item1
@@ -23,6 +24,14 @@ Item {
     signal btnClick(int num)
 
 
+//    DropShadow {
+//            anchors.fill: item1
+//            source: item1
+//            horizontalOffset: 2
+//            verticalOffset: 2
+//            color: "#000000"//"#80000000"
+//            radius: 1
+//     }
 
     Image {
         id: btnImg

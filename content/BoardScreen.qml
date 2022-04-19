@@ -18,14 +18,44 @@ Item {
 
     }
 
+    function checkGroup(changeID)
+    {
+        var ret = 1
+        for(var i = 0 ; i < modelGroup.count ; i++)
+        {
+            if(modelGroup.get(i).groupId === changeID)
+            {
+                ret = 0
+                return ret
+            }
+        }
+        return ret
+    }
+
     function groupAddSlot()
     {
+        var temp = 1
+        console.log("plus order")
+        for(var i = 0 ; i < modelGroup.count ; i++)
+        {
+            if(++temp > 16)
+                temp = 1
+            if(checkGroup(temp))
+                break
+        }
+
+        if( modelGroup.count === 1)
+        {
+            modelGroup.set(0,{ groupId : 1})
+        }
+
+
         //modelGroup.sync()
         modelGroup.append({
                               index: modelGroup.count,
                               mode : 0, //base = 2, rc = 3, dyTTL = 4, dy485 = 5
                               selected : 0,
-                              groupId : 0,
+                              groupId : temp,//0,
                               groupName : "",
                               baseType : [],
                               rcType : [],
@@ -42,6 +72,9 @@ Item {
                 //console.log("index : "+ modelGroup.get(i).index + "   selected :" + modelGroup.get(i).selected)
             }
         }
+
+
+
 
 
 

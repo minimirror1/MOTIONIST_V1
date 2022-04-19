@@ -438,7 +438,7 @@ Item {
 
         Text {
             id: text2
-            width: 160
+            width: 40
             height: 50
             color: "#ffffff"
             text: page
@@ -451,11 +451,27 @@ Item {
             font.family: "HelveticaRounded-Black"
         }
 
+        Text {
+            id: text3
+            width: 30
+            height: 30
+            color: "#ffffff"
+            text: "/" + midiGroup.count
+            anchors.verticalCenter: text2.verticalCenter
+            anchors.left: text2.right
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.verticalCenterOffset: 7
+            font.family: "HelveticaRounded-Black"
+        }
+
         TextInput {
             id: textInput
             x: 243
             width: 200
             height: 36
+            cursorVisible: true
             selectByMouse: true
             color: "#ffffff"
             text: qsTr("Text Input")
@@ -467,7 +483,15 @@ Item {
             verticalAlignment: Text.AlignVCenter
             anchors.rightMargin: 130
             font.family: "HYGothic-Extra"
+
+            onActiveFocusChanged: {
+                if(activeFocus)
+                {
+                    selectAll()
+                }
+            }
         }
+
 
 //button
 
@@ -548,6 +572,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.9}
+    D{i:0;formeditorZoom:0.9}D{i:21}D{i:22}
 }
 ##^##*/

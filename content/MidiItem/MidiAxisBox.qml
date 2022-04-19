@@ -80,7 +80,7 @@ Item {
             text1.color = MyColors.textMainColor
             text3.color = MyColors.textMainColor
         }
-
+        dragMouse.cursorShape = Qt.ClosedHandCursor
         //mouseChangeXYsignal(dragMouse.mouse.x, dragMouse.mouse.y)//+100)
     }
     Component.onCompleted: update()
@@ -96,11 +96,21 @@ Item {
         property real origenY
 
         propagateComposedEvents  : true
+        hoverEnabled: true
+
+
+        onEntered: {
+           dragMouse.cursorShape = Qt.OpenHandCursor
+        }
+        onExited: {
+            dragMouse.cursorShape = Qt.ArrowCursor
+        }
 
         onPressed: {
             origenX = parent.x
             origenY = parent.y
             midiAxisBox.opacity = 0.5
+            dragMouse.cursorShape = Qt.ClosedHandCursor
 
         }
         onReleased: {
@@ -111,6 +121,7 @@ Item {
             rectangle.color = MyColors.boxBgColor
             text1.color = MyColors.textMainColor
             text3.color = MyColors.textMainColor
+            dragMouse.cursorShape = Qt.OpenHandCursor
         }
     }
 
