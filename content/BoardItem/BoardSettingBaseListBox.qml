@@ -206,6 +206,7 @@ Item {
         id: textInput
         x: 83
         width: 200
+        selectByMouse: true
         color: MyColors.textMainColor
         text: (axisName.length === 0)? "TextInput" : axisName
         anchors.top: parent.top

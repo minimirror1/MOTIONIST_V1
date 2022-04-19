@@ -158,6 +158,7 @@ Item {
             height: 30
             color : MyColors.textMainColor
             text: (!findFlag)?" ": (currentModel.groupName.length===0)?" ":currentModel.groupName
+            selectByMouse: true
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             font.pixelSize: 26

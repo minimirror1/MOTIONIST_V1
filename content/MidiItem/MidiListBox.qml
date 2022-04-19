@@ -456,6 +456,7 @@ Item {
             x: 243
             width: 200
             height: 36
+            selectByMouse: true
             color: "#ffffff"
             text: qsTr("Text Input")
             inputMask: {"NNNNNNNNNN"}

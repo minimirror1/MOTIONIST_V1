@@ -233,6 +233,7 @@ Item {
         y: 106
         width: 200
         height: 30
+        selectByMouse: true
         color : MyColors.textMainColor
         text: (groupName.length === 0)? "TextInput" : groupName
         anchors.bottom: parent.bottom

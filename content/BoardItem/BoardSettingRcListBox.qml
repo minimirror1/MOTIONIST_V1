@@ -57,6 +57,7 @@ Item {
         id: textInput
         color: MyColors.textMainColor
         text: (axisName.length === 0)? "TextInput" : axisName
+        selectByMouse: true
         anchors.left: slotIdText.right
         anchors.right: text1.left
         anchors.top: parent.top

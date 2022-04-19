@@ -88,6 +88,7 @@ Item {
                 id: textInput_name
                 color:MyColors.textMainColor
                 text: (axisName.length === 0)? "TextInput" : axisName
+                selectByMouse: true
                 anchors.left: text_ac.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -151,6 +152,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (initNum.length === 0)? "0" : initNum
+                selectByMouse: true
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -251,6 +253,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (initPosi.length === 0)? "0" : initPosi
+                selectByMouse: true
                 anchors.left: rotBtn.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -296,6 +299,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (range.length === 0)? "0" : range
+                selectByMouse: true
                 anchors.left: initposiInput.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -341,6 +345,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (gear.length === 0)? "0" : gear
+                selectByMouse: true
                 anchors.left: rangeInput.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -400,6 +405,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (cnt.length === 0)? "0" : cnt
+                selectByMouse: true
                 anchors.left: gearInput.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -446,6 +452,7 @@ Item {
                 width: parent.width/7
                 color: MyColors.textMainColor
                 text: (rpm.length === 0)? "0" : rpm
+                selectByMouse: true
                 anchors.left: cntInput.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
