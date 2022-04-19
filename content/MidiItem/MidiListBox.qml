@@ -425,47 +425,52 @@ Item {
 
         Text {
             id: text1
-            x: 116
-            y: 64
             color: "#f7f7f7"
             text: qsTr("AXIS MAPPING PAGE")
+            anchors.verticalCenter: text2.verticalCenter
+            anchors.left: parent.left
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            anchors.leftMargin: 130
             font.family: "HelveticaRounded"
         }
 
         Text {
             id: text2
-            x: 90
-            y: 100
             width: 160
             height: 50
             color: "#ffffff"
             text: page
+            anchors.top: parent.top
             font.pixelSize: 36
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            anchors.topMargin: 80
+            anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaRounded-Black"
         }
 
         TextInput {
             id: textInput
             x: 243
-            y: 109
             width: 200
             height: 36
             color: "#ffffff"
             text: qsTr("Text Input")
-            font.pixelSize: 30
-            horizontalAlignment: Text.AlignHCenter
+            inputMask: {"NNNNNNNNNN"}
+            anchors.verticalCenter: text2.verticalCenter
+            anchors.right: parent.right
+            font.pixelSize: 24
+            horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
-            font.family: "HelveticaRounded"
+            anchors.rightMargin: 130
+            font.family: "HYGothic-Extra"
         }
 
 //button
 
-
+/*
         Image {
             id: up_button
             x: 203
@@ -534,6 +539,7 @@ Item {
                 }
             }
         }
+        */
     }
 
 
@@ -541,6 +547,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.1}
+    D{i:0;formeditorZoom:0.9}
 }
 ##^##*/

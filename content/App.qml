@@ -70,6 +70,7 @@ ApplicationWindow {
     FontLoader { id: malgun; source: "fonts/malgun.ttf" }
     FontLoader { id: malgunbd; source: "fonts/malgunbd.ttf" }
     FontLoader { id: malgunsl; source: "fonts/malgunsl.ttf" }
+    FontLoader { id: helveticabold; source: "fonts/Helvetica Bold.ttf" }
 
 
 
@@ -333,8 +334,4 @@ ApplicationWindow {
 }
 
 
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
+

@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 
 import "./MyColor"
 Item {
+    id: item1
     width: 1920
     height: 40
 
@@ -68,8 +69,11 @@ Item {
     Image {
         id: exitBtn
         anchors.right: parent.right
-        y: 0
+        anchors.top: parent.top
+        width: 30
         source: "images/Home/x.png"
+        anchors.rightMargin: 5
+        anchors.topMargin: 5
         fillMode: Image.PreserveAspectFit
 
         MouseArea{
@@ -93,6 +97,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.1}
+    D{i:0;formeditorZoom:1.66}D{i:4}
 }
 ##^##*/

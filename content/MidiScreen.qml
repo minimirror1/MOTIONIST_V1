@@ -382,6 +382,84 @@ Item {
 
     }
 
+    Image {
+        id: pageUP_btn
+        anchors.top: parent.top
+        source: "images/Midi/pageUP_normal.png"
+        anchors.topMargin: 20
+        anchors.horizontalCenter: item2.horizontalCenter
+        fillMode: Image.PreserveAspectFit
+
+        opacity : 0.5
+
+        MouseArea{
+            anchors.fill: parent
+            hoverEnabled: true
+            onEntered: {
+                pageUP_btn.source = "images/Midi/pageUP_hover.png"
+            }
+            onExited: {
+                pageUP_btn.source = "images/Midi/pageUP_normal.png"
+            }
+            onPressed: {
+                pageUP_btn.source = "images/Midi/pageUP_press.png"
+            }
+            onReleased: {
+                pageUP_btn.source = "images/Midi/pageUP_hover.png"
+            }
+            onClicked: {
+                if(pathView.currentIndex !== 0)
+                {
+                    pathView.currentIndex = pathView.currentIndex - 1
+                }
+                pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_normal.png" :"images/Midi/pageDN_normal.png"
+
+            }
+        }
+    }
+
+    Image {
+        id: pageDN_btn
+        y: 794
+        anchors.bottom: parent.bottom
+        source: (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_normal.png" : "images/Midi/pageDN_normal.png"
+        anchors.bottomMargin: (pathView.currentIndex === midiGroup.count-1)? 10 : 20
+        anchors.horizontalCenter: item2.horizontalCenter
+        fillMode: Image.PreserveAspectFit
+
+        opacity : 0.5
+
+        MouseArea{
+            anchors.fill: parent
+            hoverEnabled: true
+            onEntered: {
+
+                pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_hover.png" :"images/Midi/pageDN_hover.png"
+            }
+            onExited: {
+                pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_normal.png" :"images/Midi/pageDN_normal.png"
+            }
+            onPressed: {
+                pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_press.png" :"images/Midi/pageDN_press.png"
+            }
+            onReleased: {
+                pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_hover.png" :"images/Midi/pageDN_hover.png"
+            }
+            onClicked: {
+                if(pathView.currentIndex === midiGroup.count-1){
+
+                    newMidiPageSlot()
+                    pathView.currentIndex = pathView.currentIndex+1
+                    pageDN_btn.source = (pathView.currentIndex === midiGroup.count-1)? "images/Midi/pageADD_normal.png" : "images/Midi/pageDN_normal.png"
+                }
+                else
+                {
+                    pathView.currentIndex = pathView.currentIndex+1
+                }
+            }
+        }
+    }
+
     //        ListView {
     //            id: listView
     //            anchors.left: parent.left
@@ -440,6 +518,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:26}
+    D{i:0;formeditorZoom:0.5}
 }
 ##^##*/
